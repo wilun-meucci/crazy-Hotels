@@ -7,34 +7,33 @@
     <title>Login</title>
 </head>
 <?php
-    
-    
-    
-    
-
+    #controlla se la mail è inizializzata
     if(isset($_POST["email"]))
     {
+        #avvia la sessione ed poi importa databaseQuery
         session_start();
-        #require ( "connectDB.php");
-        require ( "databaseQuery.php");
-        #$connessione= connectDB();
-        echo "ciao <br>";
+        require("../db/databaseQuery.php");
+
+        #controlla se il campo mail e pass sono giusti hashando la pass prima
         if(checkExistUser($_POST["email"] , hash('sha256',$_POST["password"])))
         {
             $mail = $_POST["email"];
             $_SESSION["idUser"] =$idUser = getIdUSer($mail);
             $_SESSION["nameUser"] =$nameUser = getNameUSer($idUser);
+            #ritorna al index dopo aver fatto il login e mette login a true per cambiare la visualizzazione nel index nella navbar
             $_SESSION["login"] = true;
-            header("location: index.php");
-            
+            header("location: ../index.php");
         }
-        else echo "non funge";
+        else 
+        {
+            #aggiungere un visuallizazione migliore
+            echo "errore mail oppure password";
+        }
         
     } 
     else 
     {
-        echo "sei stupido";
-        #header("location: login.html");
+        echo "non hai messo mail";
     }
 ?>
 <body>
