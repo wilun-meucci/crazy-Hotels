@@ -24,7 +24,28 @@
                 <!--navbar-->
                 <div class="navbar">
                     <a href="index.php"><img src="iconphoto/crazylogo5.png" alt="3" id="logonav"></a>
-                    <a href="login.html"><button type="button" class="btn btn-light">accedi</button></a>
+                    <?php
+
+                        session_start();
+                        if(!isset($_SESSION["login"]))
+                        {
+                            $login = false;
+                        }
+                        else 
+                            $login = $_SESSION["login"];
+
+                        if($login)
+                        {
+                            echo $_SESSION["nameUser"];
+                        ?>
+                            <script>alert("benvenuto");</script>
+                        <?php  
+                        }
+                        else 
+                        {
+                            echo '<a href="login.html"><button type="button" class="btn btn-light">accedi</button></a>';
+                        }
+                    ?>
                 </div>
 
                 <!--Carosel-->

@@ -5,11 +5,10 @@
         $username = "root";
         $password = "";
         $dbname = "crazyhotels";
-        $connessione = new mysqli("localhost", "root", "", "crazyhotels");
+        $connessione = new mysqli($servername, $username, $password, $dbname);
         if ($connessione->connect_error) 
         {
             #aggiungere un visuallizazione migliore
-            header("location: index.html");
             die("Connection failed: " . $connessione->connect_error);
         } 
         else return $connessione;

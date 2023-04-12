@@ -1,25 +1,28 @@
 <?php
     require ( "connectDB.php");
     $connessione = connectDB();
-    function getUSer($email)
+    function getUSer($id)
     {
         global $connessione;
-        $sql = "SELECT * FROM utenti where email = '$email'";
+        $sql = "SELECT * FROM utenti where email = '$id' OR idUtente = '$id' ;";
         $result = $connessione->query($sql);
         return $result;
     }
-    function getIdUSer($email)
+    function getIdUSer($id)
     {
-        return getUSer($email)["idUtente"];
+        return getUSer($id)->fetch_assoc()["idUtente"];
+    }
+
+    function getNameUSer($id)
+    {
+        return getUSer($id)->fetch_assoc()["nome"];
     }
 
     function checkExistUser($email,$psw) 
     {
         global $connessione;
         $sql = "SELECT * FROM utenti where email = '$email' and  passwd='$psw'";
-        echo "sql: $sql <br>";
         $result = $connessione->query($sql) or die("fail");
-        echo "result: $result <br>";
         if($result->num_rows > 0 )
         {
             return true;

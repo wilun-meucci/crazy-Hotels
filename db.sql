@@ -35,6 +35,7 @@ CREATE TABLE utenti
     passwd varchar(255),
     CHECK(passwd REGEXP"^[a-fA-F0-9]{64}$"),
     unique (email),
+    unique (idUtente),
     primary key(idUtente)
 );
 
@@ -89,3 +90,4 @@ CREATE TABLE scrivono
     foreign key (idUtente) references utenti(idUtente),
     foreign key(idCommento) references commenti(idCommento)
 );
+insert into utenti(idUtente,nome,cognome,email, passwd) value ("idCiao","nomeCiao","cognomeCiao","ciao@ciao.com", SHA2("ciao",256));

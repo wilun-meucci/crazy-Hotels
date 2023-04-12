@@ -19,14 +19,14 @@
         require ( "databaseQuery.php");
         #$connessione= connectDB();
         echo "ciao <br>";
-        if(checkExistUser($_POST["email"] , $_POST["password"]))
+        if(checkExistUser($_POST["email"] , hash('sha256',$_POST["password"])))
         {
-            echo "gg <br>";
-            $_SESSION["idUser"] =$idUser = getIdUSer($_POST["email"]);
-            #header("location: index.html");
-           
-            echo "wow funge";
-            echo "id: $idUser";
+            $mail = $_POST["email"];
+            $_SESSION["idUser"] =$idUser = getIdUSer($mail);
+            $_SESSION["nameUser"] =$nameUser = getNameUSer($idUser);
+            $_SESSION["login"] = true;
+            header("location: index.php");
+            
         }
         else echo "non funge";
         
