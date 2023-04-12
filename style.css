@@ -1,0 +1,27 @@
+body {
+    background-color: burlywood;
+}
+
+#logonav {
+    width: 100px;
+    height: 70px;
+    float: left;
+    margin-top: 1%;
+}
+
+.navbar button {
+    float: right;
+    margin-top: 1%;
+}
+
+.carosel {
+    margin-top: 2rem;
+}
+
+.carousel-inner {
+    border-radius: 20px;
+}
+
+.footer {
+    background-color: black;
+}
