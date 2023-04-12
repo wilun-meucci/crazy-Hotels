@@ -18,14 +18,17 @@
         #require ( "connectDB.php");
         require ( "databaseQuery.php");
         #$connessione= connectDB();
-        
+        echo "ciao <br>";
         if(checkExistUser($_POST["email"] , $_POST["password"]))
         {
+            echo "gg <br>";
             $_SESSION["idUser"] =$idUser = getIdUSer($_POST["email"]);
             #header("location: index.html");
+           
             echo "wow funge";
             echo "id: $idUser";
         }
+        else echo "non funge";
         
     } 
     else 
@@ -35,6 +38,6 @@
     }
 ?>
 <body>
-    body
+    
 </body>
 </html>

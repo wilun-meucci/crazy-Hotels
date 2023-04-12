@@ -17,7 +17,9 @@
     {
         global $connessione;
         $sql = "SELECT * FROM utenti where email = '$email' and  passwd='$psw'";
+        echo "sql: $sql <br>";
         $result = $connessione->query($sql) or die("fail");
+        echo "result: $result <br>";
         if($result->num_rows > 0 )
         {
             return true;
