@@ -9,7 +9,7 @@
         if ($connessione->connect_error) 
         {
             #aggiungere un visuallizazione migliore
-
+            header("location: index.html");
             die("Connection failed: " . $connessione->connect_error);
         } 
         else return $connessione;
