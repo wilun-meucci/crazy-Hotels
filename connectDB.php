@@ -9,9 +9,12 @@
         if ($connessione->connect_error) 
         {
             #aggiungere un visuallizazione migliore
+            echo "dio cane";
             die("Connection failed: " . $conn->connect_error);
         } 
         else return $connessione;
         
     }
+
+    
 ?>
