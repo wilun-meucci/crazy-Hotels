@@ -8,19 +8,23 @@
 </head>
 <?php
     #controlla se la mail è inizializzata
-    if(isset($_POST["email"]))
+    if(isset($_POST["mail"]))
     {
         #avvia la sessione ed poi importa databaseQuery
         session_start();
         require("../db/databaseQuery.php");
 
         #controlla se il campo mail esiste gia nel db 
-        if(!checkExistUser($_POST["email"]))
+        if(!checkExistUser($_POST["mail"]))
         {
             $nome = $_post["name"];
             $cognome = $_post["surname"];
-            $mail = $_POST["email"];
+            $conpleanno = $_post["birthday"];
+            $gender = $_post["gender"];
+            $mail = $_POST["mail"];
+            $number = $_post["phoneNumber"];
             $psw = $_post["psw"];
+            $pswConferma = $_post["psw1"];
             
         }
         else 
