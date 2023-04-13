@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
 
 <body style="background-color: burlywood;">
@@ -26,31 +27,27 @@
                     <a href="index.php"><img src="iconphoto/crazylogo5.png" alt="3" id="logonav"></a>
                     <?php
 
-                        session_start();
-                        if(!isset($_SESSION["login"]))
-                        {
-                            $login = false;
-                        }
-                        else 
-                            $login = $_SESSION["login"];
+                    session_start();
+                    if (!isset($_SESSION["login"])) {
+                        $login = false;
+                    }
+                    else
+                        $login = $_SESSION["login"];
 
-                        if($login)
-                        {
-                            echo $_SESSION["nameUser"];
-                        ?>
-                            <script>alert("benvenuto");</script>
-                        <?php  
-                        }
-                        else 
-                        {
-                            echo '<a href="html/login.html"><button type="button" class="btn btn-light">accedi</button></a>';
-                        }
+                    if ($login) {
+                        echo $_SESSION["nameUser"];
+                    ?>
+                                                <script>alert("benvenuto");</script>
+                                            <?php
+                    }
+                    else {
+                        echo '<a href="html/login.html"><button type="button" class="btn btn-light">accedi</button></a>';
+                    }
                     ?>
                 </div>
 
                 <!--Carosel-->
-                <div class="carosel">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div id="carouselExampleIndicators" class="carousel slide w-50 float-start" data-bs-ride="true">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -77,9 +74,8 @@
                         </button>
                     </div>
                 </div>
-            </div>
             <div class="col-md-2">
-
+            
             </div>
             <!--Footer-->
 
@@ -87,13 +83,26 @@
 
             <div class="footer">
                 <div class="row">
-                    <div class="col-md-2">
-
+                    <div class="col-md-3">
+                        <hr class="l">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
+                    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+                        <div class="col-md-4 d-flex align-items-center">
+                        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                        </a>
+                        <span class="mb-3 mb-md-0 text-light">© 2022 Company, Inc</span>
+                        </div>
 
+                        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                        <li class="ms-3"><a class="text-light" href="#"><i class="bi bi-facebook"></i></a></i></li>
+                        <li class="ms-3"><a class="text-light" href="#"><i class="bi bi-instagram"></i></a></li>
+                        <li class="ms-3"><a class="text-light" href="#"><i class="bi bi-whatsapp"></i></a></li>
+                        </ul>
+                    </footer>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
 
                     </div>
                 </div>
