@@ -9,19 +9,35 @@ body {
     margin-top: 1%;
 }
 
+.navbar {
+    position: sticky;
+}
+
 .navbar button {
     float: right;
     margin-top: 1%;
 }
 
-.carosel {
-    margin-top: 2rem;
-}
-
 .carousel-inner {
     border-radius: 20px;
+    margin-top: 3rem;
+    margin-right: 2px;
 }
 
 .footer {
-    background-color: black;
+    background-color: rgb(158, 130, 93);
+    bottom: 0;
+    position: fixed;
+}
+
+hr.l {
+    width: 1000%;
+    left: 0;
+    position: fixed;
+    border-top: 2px solid white;
+}
+
+.img{
+    margin-top: 3rem;
+    float: right;
 }
