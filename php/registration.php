@@ -7,6 +7,13 @@
     <title>Registration</title>
 </head>
 <?php
+    function checkPsw($psw,$pswConferma)
+    {
+        if($psw ==$pswConferma)
+            return true;
+        else 
+            return false;
+    }
     #controlla se la mail è inizializzata
     if(isset($_POST["mail"]))
     {
@@ -17,15 +24,31 @@
         #controlla se il campo mail esiste gia nel db 
         if(!checkExistUser($_POST["mail"]))
         {
-            $nome = $_post["name"];
-            $cognome = $_post["surname"];
-            $conpleanno = $_post["birthday"];
-            $gender = $_post["gender"];
+            $nome = $_POST["name"];
+            $cognome = $_POST["surname"];
+            $conpleanno = $_POST["birthday"];
+            $gender = $_POST["gender"];
             $mail = $_POST["mail"];
-            $number = $_post["phoneNumber"];
-            $psw = $_post["psw"];
-            $pswConferma = $_post["psw1"];
-            
+            $telefono = $_POST["phoneNumber"];
+            $psw = $_POST["psw"];
+            $pswConferma = $_POST["psw1"];
+            if(checkPsw($psw,$pswConferma))
+            {
+                $userId = getNumId()+1;
+                require("../db/databaseInsert.php");
+                if(registration($userId,$nome, $cognome, $mail, $psw, $gender,$conpleanno,$telefono))
+                {
+                    echo "gg";
+                    $_SESSION["login"] = true;
+                    header("location: ../index.php");
+                }
+
+
+            }
+            else 
+            {
+                echo "password non coincidono";
+            }
         }
         else 
         {

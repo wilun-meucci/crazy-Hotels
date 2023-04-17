@@ -1,12 +1,11 @@
 <?php
-    require ( "connectDB.php");
-    $connessione = connectDB();
+    $connessione = $_SESSION["db"];
 
-    function registration($nome,$cognome,$mail,$psw,$telefono,$gender)
+    function registration($userId,$nome, $cognome, $mail, $psw, $gender,$conpleanno,$telefono)
     {
         global $connessione;
         #$sql = "SELECT * FROM utenti where email = '$email' and  passwd='$psw'";
-        $insertInto = "INSERT INTO utenti (nome,cognome,email,numero,gender,,passw) VALUES ('$nome', '$cognome', '$mail', '$telefono', '$gender','$psw');";
+        $insertInto = "INSERT INTO utenti (idUtente,nome,cognome,email,passwd,sesso,dataNascita,numeroTelefono) VALUES ('$userId','$nome', '$cognome', '$mail', '$psw', '$gender','$conpleanno','$telefono');";
         $result = $connessione->query($insertInto) or die("fail");
         if ($result=== TRUE) 
         {
