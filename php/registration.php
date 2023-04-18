@@ -39,12 +39,11 @@
                 if(registration($userId, $nome, $cognome, $mail, hash('sha256',$psw), $gender,$compleanno,$telefono))
                 {
                     echo "gg";
-                    $_SESSION["login"] = true;
-                    header("location: ../index.php");
+                    $_POST["email"] = $mail;
+                    header("location: ../html/login.html");
                 }
                 else 
-                    echo "dio cane";
-
+                    echo "non andata registrazione";
             }
             else 
             {
@@ -61,6 +60,7 @@
     else 
     {
         echo "non hai messo mail";
+        echo "dio";
     }
 ?>
 <body>

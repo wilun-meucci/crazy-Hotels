@@ -6,8 +6,6 @@
         global $connessione;
         #$sql = "SELECT * FROM utenti where email = '$email' and  passwd='$psw'";
         $insertInto = "INSERT INTO utenti (idUtente,nome,cognome,email,passwd,sesso,dataNascita,numeroTelefono) VALUES ('$userId','$nome','$cognome','$mail','$psw','$gender','$conpleanno','$telefono');";
-        echo "<br>insertInto: ". $insertInto;
-
         $result = $connessione->query($insertInto) or die("fail");
        
         if ($result=== TRUE) 
