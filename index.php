@@ -32,7 +32,7 @@
                         $login = false;
                     }
                     else
-                        $login = $_SESSION["login"];
+                        $login = $_SESSION["login"];    
 
                     if ($login) {
                         echo "
@@ -50,8 +50,8 @@
                     
                         ";
                     ?>
-                                                <script>alert("benvenuto");</script>
-                                            <?php
+                       <script>alert("benvenuto");</script>
+                    <?php
                     }
                     else {
                         echo '<a href="html/login.html"><button type="button" class="btn btn-light">accedi</button></a>';

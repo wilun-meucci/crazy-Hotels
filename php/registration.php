@@ -26,7 +26,7 @@
         {
             $nome = $_POST["name"];
             $cognome = $_POST["surname"];
-            $conpleanno = $_POST["birthday"];
+            $compleanno = $_POST["birthday"];
             $gender = $_POST["gender"];
             $mail = $_POST["mail"];
             $telefono = $_POST["phoneNumber"];
@@ -36,14 +36,14 @@
             {
                 $userId = getNumId()+1;
                 require("../db/databaseInsert.php");
-                if(registration($userId,$nome, $cognome, $mail, $psw, $gender,$conpleanno,$telefono))
+                if(registration($userId, $nome, $cognome, $mail, hash('sha256',$psw), $gender,$compleanno,$telefono))
                 {
                     echo "gg";
-                    $_SESSION["login"] = true;
-                    header("location: ../index.php");
+                    $_POST["email"] = $mail;
+                    header("location: ../html/login.html");
                 }
-
-
+                else 
+                    echo "non andata registrazione";
             }
             else 
             {
@@ -60,6 +60,7 @@
     else 
     {
         echo "non hai messo mail";
+        echo "dio";
     }
 ?>
 <body>

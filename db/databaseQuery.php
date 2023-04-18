@@ -1,5 +1,4 @@
 <?php
-    
     require ( "connectDB.php");
     $_SESSION["db"] = $connessione = connectDB();
 
@@ -38,7 +37,8 @@
     function getNumId()
     {
         $sql = "SELECT count(idUtente) FROM utenti";
-        return intval($sql);
+        echo 'number: '.$sql;
+        return intval(query($sql));
     }
     #ritorna il idUtente
     function getIdUSer($id)
