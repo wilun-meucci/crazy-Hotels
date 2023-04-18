@@ -1,3 +1,6 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+
 body {
     background-color: burlywood;
 }
@@ -40,4 +43,66 @@ hr.l {
 .img{
     margin-top: 3rem;
     float: right;
+}
+
+.padding{
+    padding: 3rem;
+    right: 15%;
+    position: fixed;
+    
+    font-family: 'Noto Serif KR', serif;
+}
+
+.padding2{
+    right: 15%;
+    font-family: 'Noto Serif KR', serif;
+}
+
+.search {
+    width: 100%;
+    padding-top: 2rem;
+    background-image: url(../immagini/ciao1.jpg);
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.bar-search {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    background: rgba(red, green, blue, 0.2);
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+    backdrop-filter: blur(4px) saturate(180%);
+}
+
+.bar-search input{
+    background: transparent;
+    flex:1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size:20px;
+    color: #cac7ff;
+}
+
+::placeholder{
+    color:#cac7ff;
+}
+
+.bar-search button img{
+    width: 25px;
+}
+
+.bar-search button{
+    width: 60px;
+    height: 60px;
+    border: 0;
+    border-radius: 50%;
+    background: #58629b;
+    cursor:pointer;
 }

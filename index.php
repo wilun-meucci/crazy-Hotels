@@ -35,7 +35,20 @@
                         $login = $_SESSION["login"];
 
                     if ($login) {
-                        echo $_SESSION["nameUser"];
+                        echo "
+                        <div class='dropdown'>
+                        <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-bs-toggle='dropdown' aria-expanded='false'>
+                        ".$_SESSION['nameUser']." 
+                        </button>
+                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+                          <li><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></li>
+                          <li><button class='dropdown-item' type='button'>fsffd</button></li>
+                          <li><button class='dropdown-item' type='button'>Esci</button></li>
+                        </ul>
+                      </div>
+
+                    
+                        ";
                     ?>
                                                 <script>alert("benvenuto");</script>
                                             <?php
@@ -46,6 +59,12 @@
                     ?>
                 </div>
 
+                <div class="search">
+                    <form method="" class="bar-search">
+                    <input type="text" placehoder="search destination" name="posto" id="posto">
+                    <button><i class="bi bi-search"></i></button>
+                     </form>
+                </div>
                 <!--Carosel-->
                     <div id="carouselExampleIndicators" class="carousel slide w-50 float-start" data-bs-ride="true">
                         <div class="carousel-indicators">
@@ -73,9 +92,9 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
+                    <h1 class="padding">chi siamo</h1>
                 </div>
             <div class="col-md-2">
-            
             </div>
             <!--Footer-->
 
