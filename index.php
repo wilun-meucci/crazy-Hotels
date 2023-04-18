@@ -32,13 +32,23 @@
                         $login = false;
                     }
                     else
-                        $login = $_SESSION["login"];
+                        $login = $_SESSION["login"];    
 
                     if ($login) {
-                        echo $_SESSION["nameUser"];
+                        echo "
+                        <div class='dropdown'>
+                        <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-bs-toggle='dropdown' aria-expanded='false'>
+                        ".$_SESSION['nameUser']." 
+                        </button>
+                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+                          <li><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></li>
+                          <li><button class='dropdown-item' type='button'>fsffd</button></li>
+                          <li><button class='dropdown-item' type='button'>Esci</button></li>
+                        </ul>
+                      </div>";
                     ?>
-                                                <script>alert("benvenuto");</script>
-                                            <?php
+                       <script>alert("benvenuto");</script>
+                    <?php
                     }
                     else {
                         echo '<a href="html/login.html"><button type="button" class="btn btn-light">accedi</button></a>';
