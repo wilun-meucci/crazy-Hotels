@@ -1,5 +1,4 @@
 <?php
-    
     require ( "connectDB.php");
     $_SESSION["db"] = $connessione = connectDB();
 
