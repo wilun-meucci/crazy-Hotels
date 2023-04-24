@@ -50,7 +50,6 @@
                     
                         ";
                     ?>
-                       <script>alert("benvenuto");</script>
                     <?php
                     }
                     else {
@@ -64,6 +63,7 @@
                     <input type="text" placehoder="search destination" name="posto" id="posto">
                     <button><i class="bi bi-search"></i></button>
                      </form>
+                     <br><br><br><br><br><br><br><br>
                 </div>
                 <!--Carosel-->
                     <div id="carouselExampleIndicators" class="carousel slide w-50 float-start" data-bs-ride="true">
@@ -115,9 +115,9 @@
                         </div>
 
                         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                        <li class="ms-3"><a class="text-light" href="#"><i class="bi bi-facebook"></i></a></i></li>
-                        <li class="ms-3"><a class="text-light" href="#"><i class="bi bi-instagram"></i></a></li>
-                        <li class="ms-3"><a class="text-light" href="#"><i class="bi bi-whatsapp"></i></a></li>
+                        <li class="ms-3"><a class="text-light" href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a></i></li>
+                        <li class="ms-3"><a class="text-light" href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
+                        <li class="ms-3"><a class="text-light" href="https://wa.me/390123456789"><i class="bi bi-whatsapp"></i></a></li>
                         </ul>
                     </footer>
                     </div>
