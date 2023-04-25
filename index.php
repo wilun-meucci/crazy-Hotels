@@ -15,7 +15,7 @@
 <body style="background-color: burlywood;">
 
     <!--container-->
-    <div class="container-fluid text-center">
+    <div class="container-fluid text-center position-relative" style="min-height: 130vh;">
         <div class="row">
             <div class="col-md-2">
 
@@ -40,15 +40,20 @@
                         <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-bs-toggle='dropdown' aria-expanded='false'>
                         ".$_SESSION['nameUser']." 
                         </button>
-                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
-                          <li><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></li>
-                          <li><button class='dropdown-item' type='button'>fsffd</button></li>
-                          <li><button class='dropdown-item' type='button'>Esci</button></li>
-                        </ul>
-                      </div>
+                            <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+                                <li><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></li>
+                                <li><button class='dropdown-item' type='button'>fsffd</button></li>
+                                <form action='index.php' method='post'>
+                                    <li>
+                                        <input type='submit' name='esci' value='Esci' class='dropdown-item'>
+                                    </li>
+                                </form>
+                            </ul>
+                        </div>
 
                     
                         ";
+                    //<button class='dropdown-item' type='button' name='esci'>Esci</button>
                     ?>
                     <?php
                     }
@@ -56,8 +61,15 @@
                         echo '<a href="html/login.html"><button type="button" class="btn btn-light">accedi</button></a>';
                     }
                     ?>
+                    <?php
+                        //EXIT
+                        if (isset($_POST['esci'])) {
+                            $_SESSION["login"] = false;
+                            $_SERVER['PHP_SELF'];
+                        }
+                    ?>
                 </div>
-
+                
                 <div class="search">
                     <form method="" class="bar-search">
                     <input type="text" placehoder="search destination" name="posto" id="posto">
@@ -92,7 +104,6 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                    <h1 class="padding">chi siamo</h1>
                 </div>
             <div class="col-md-2">
             </div>
@@ -100,24 +111,26 @@
 
             <!--Sistemare il footer per averlo completo-->
 
-            <div class="footer">
+            <div class="footer position-absolute b-0">
                 <div class="row">
                     <div class="col-md-3">
                         <hr class="l">
                     </div>
                     <div class="col-md-6">
-                    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+                    <footer class="d-flex flex-wrap justify-content-between align-items-center py-1 my-1">
                         <div class="col-md-4 d-flex align-items-center">
-                        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-                        </a>
-                        <span class="mb-3 mb-md-0 text-light">© 2022 Company, Inc</span>
+                        <span class="mb-1 mb-md-0" style="color:antiquewhite;">&copy; 2022 Company, Inc</span>
                         </div>
-
+                        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3">
+                            <img src="iconphoto/crazylogo5.png"  style="width: 80px;
+                                                                        height: 50px;
+                                                                        float: left;
+                                                                        margin-top: 1%;">
+                        </a>
                         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                        <li class="ms-3"><a class="text-light" href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a></i></li>
-                        <li class="ms-3"><a class="text-light" href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
-                        <li class="ms-3"><a class="text-light" href="https://wa.me/390123456789"><i class="bi bi-whatsapp"></i></a></li>
+                            <li class="ms-3"><a style="color:antiquewhite;" href="#"><i class="bi bi-facebook"></i></a></li>
+                            <li class="ms-3"><a style="color:antiquewhite;" href="#"><i class="bi bi-instagram"></i></a></li>
+                            <li class="ms-3"><a style="color:antiquewhite;" href="#"><i class="bi bi-whatsapp"></i></a></li>
                         </ul>
                     </footer>
                     </div>

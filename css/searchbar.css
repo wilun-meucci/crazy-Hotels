@@ -47,3 +47,11 @@
     background: #58629b;
     cursor:pointer;
 }
+
+@media screen and (max-widht: 576px) {
+    
+    .search {
+        
+    }
+
+}

@@ -34,11 +34,8 @@ body {
     position: fixed;
 }
 
-hr.l {
-    width: 1000%;
-    left: 0;
-    position: fixed;
-    border-top: 2px solid white;
+.we {
+    color:antiquewhite;
 }
 
 .img{
@@ -59,5 +56,7 @@ hr.l {
     font-family: 'Noto Serif KR', serif;
 }
 
-
+@media screen and (max-widht: 576px) {
+    
+}
 
