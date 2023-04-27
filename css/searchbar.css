@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+
+
 .search {
     width: 100%;
     padding-top: 2rem;
@@ -18,7 +21,8 @@
     align-items: center;
     border-radius: 60px;
     padding: 10px 20px;
-    backdrop-filter: blur(5px) saturate(180%);
+    background-color: white;
+    box-shadow: 2px 2px 2px #aaaaaa;
 }
 
 .bar-search input{
@@ -26,13 +30,15 @@
     flex:1;
     border: 0;
     outline: none;
-    padding: 20px 16px;
+    padding: 5px 10px;
     font-size:20px;
-    color: #fbfbff;
+    font-family: 'Noto Serif KR', serif;
+    color: burlywood;
 }
 
 ::placeholder{
-    color:#cac7ff;
+    color:burlywood;
+    text-align: center;
 }
 
 .bar-search button img{
@@ -44,7 +50,7 @@
     height: 60px;
     border: 0;
     border-radius: 50%;
-    background: #58629b;
+    background: white;
     cursor:pointer;
 }
 
