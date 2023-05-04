@@ -11,7 +11,11 @@
 
     if(checkExistUser($_SESSION["user"]))
     {
-        
+        echo "gg";
+    }
+    else 
+    {
+        header("location: ../index.php");
     }
 ?>
 <body>
