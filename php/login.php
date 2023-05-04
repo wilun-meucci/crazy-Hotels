@@ -22,6 +22,7 @@
             $_SESSION["nameUser"] =$nameUser = getNameUSer($idUser);
             #ritorna al index dopo aver fatto il login e mette login a true per cambiare la visualizzazione nel index nella navbar
             $_SESSION["login"] = true;
+            $_SESSION["user"] = $idUser;
             header("location: ../index.php");
         }
         else 
