@@ -84,7 +84,7 @@
                 </div>
 
                 <!--Carosel-->
-                    <div id="carouselExampleIndicators" class="carousel slide w-50 float-start" data-bs-ride="true">
+                    <div id="carouselExampleIndicators" class="carousel slide w-100" data-bs-ride="true">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="iconphoto/crazylogo1.png" class="d-block w-100" alt="...">
+                                <img src="immagini/ciao6.jpg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
                                 <img src="iconphoto/crazylogo2.png" class="d-block w-100" alt="...">
@@ -110,7 +110,25 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
+                        <br><br>
+                    <?php
+                         require ( "./db/connectDB.php");
+                        $_SESSION["db"] = $connessione = connectDB();
+                        $q = "SELECT nome, descrizione FROM hotel LIMIT 4";
+                        $result = $_SESSION["db"] ->query($q);
+
+                        while ($row = $result->fetch_assoc()) {
+                         echo"<div class='card w-25 float-start'>
+                            <img src='iconphoto/crazylogo2.png' class='card-img-top '>
+                            <div class='card-body'>
+                                <h5 class='card-title'>". $row['nome'] ."</h5>
+                                <p class='card-text'>".$row['descrizione']."</p>
+                            </div>
+                    </div>";
+        }
+                    ?>
                 </div>
+                
             <div class="col-md-2">
             </div>
             <!--Footer-->
@@ -120,7 +138,6 @@
             <div class="footer position-absolute b-0">
                 <div class="row">
                     <div class="col-md-3">
-                        <hr class="l">
                     </div>
                     <div class="col-md-6">
                     <footer class="d-flex flex-wrap justify-content-between align-items-center py-1 my-1">

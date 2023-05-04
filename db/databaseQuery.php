@@ -11,7 +11,7 @@
         $result = $connessione->query($sql);
         return $result;
     }
-    function query($sql)
+    function queryBool($sql)
     {
         global $connessione;
         $result = $connessione->query($sql) or die("fail");
@@ -60,5 +60,20 @@
     {
         return getUSer($id)->fetch_assoc()["nome"];
     }
-    
+    function cardName()
+    {
+        global $connessione;
+        $q = "SELECT nome FROM hotel LIMIT 4";
+        $result = $connessione ->query($q);
+
+        while ($row = $result->fetch_assoc()) {
+            echo"<div class='card w-25 float-start'>
+                        <img src='iconphoto/crazylogo2.png' class='card-img-top '>
+                        <div class='card-body'>
+                            <h5 class='card-title'>". $row['nome'] ."</h5>
+                            <p class='card-text'>This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>";
+        }
+    }
 ?>

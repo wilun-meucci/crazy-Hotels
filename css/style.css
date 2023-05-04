@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
 @import 'searchbar.css';
 
-body {
+.body {
     background-color: burlywood;
+    background:fixed;
 }
 
 #logonav {
@@ -61,6 +62,9 @@ bordo-b{
     background-color: yellow;
 }
 
+.card{
+    height: 2400px;
+}
 @media screen and (max-widht: 576px) {
     
 }
