@@ -28,11 +28,11 @@
                     <?php
 
                     session_start();
-                    if (!isset($_SESSION["login"])) {
+                    if (!isset($_SESSION["user"])) {
                         $login = false;
                     }
                     else
-                        $login = $_SESSION["login"];    
+                        $login = $_SESSION["user"];    
 
                     if ($login) {
                         echo "
@@ -64,8 +64,13 @@
                     <?php
                         //EXIT
                         if (isset($_POST['esci'])) {
-                            $_SESSION["login"] = false;
-                            $_SERVER['PHP_SELF'];
+                            #$_SESSION["login"] = false;
+                            require("./php/logout.php");
+                            logout($_SESSION['user']->id);
+                            header("location: ./php/logout.php");
+                            #header("location: index.php");
+
+                            #$_SERVER['PHP_SELF'];
                         }
                     ?>
                 </div>
