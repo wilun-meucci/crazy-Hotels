@@ -60,7 +60,7 @@
     else 
     {
         echo "non hai messo mail";
-        echo "dio";
+        echo "dio"; //bello wilun 
     }
 ?>
 <body>

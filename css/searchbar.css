@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+
+
+.search {
+    width: 100%;
+    padding-top: 2rem;
+    background-image: url(../immagini/ciao1.jpg);
+    background-size:cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 2%;
+}
+
+.bar-search {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    background: rgba(red, green, blue, 0.2);
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 2px 2px 2px #aaaaaa;
+}
+
+.bar-search input{
+    background: transparent;
+    flex:1;
+    border: 0;
+    outline: none;
+    padding: 5px 10px;
+    font-size:20px;
+    font-family: 'Noto Serif KR', serif;
+    color: burlywood;
+}
+
+::placeholder{
+    color:burlywood;
+    text-align: center;
+}
+
+.bar-search button img{
+    width: 25px;
+}
+
+.bar-search button{
+    width: 60px;
+    height: 60px;
+    border: 0;
+    border-radius: 50%;
+    background: white;
+    cursor:pointer;
+}
+
+@media screen and (max-widht: 576px) {
+    
+    .search {
+        
+    }
+
+}

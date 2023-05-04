@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+@import 'searchbar.css';
+
 body {
     background-color: burlywood;
 }
@@ -11,6 +15,7 @@ body {
 
 .navbar {
     position: sticky;
+    top: 0px;
 }
 
 .navbar button {
@@ -30,14 +35,33 @@ body {
     position: fixed;
 }
 
-hr.l {
-    width: 1000%;
-    left: 0;
-    position: fixed;
-    border-top: 2px solid white;
+.we {
+    color:antiquewhite;
 }
 
 .img{
     margin-top: 3rem;
     float: right;
 }
+
+.padding{
+    padding: 3rem;
+    right: 15%;
+    position: fixed;
+    font-family: 'Noto Serif KR', serif;
+}
+
+.padding2{
+    right: 15%;
+    font-family: 'Noto Serif KR', serif;
+}
+
+bordo-b{
+    border: 2px solid black;
+    background-color: yellow;
+}
+
+@media screen and (max-widht: 576px) {
+    
+}
+
