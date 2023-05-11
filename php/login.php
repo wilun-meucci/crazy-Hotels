@@ -28,7 +28,7 @@
         else 
         {
             #aggiungere un visuallizazione migliore
-            echo "errore mail oppure password";
+            header("location: ../html/login.html");
         }
         
     } 
