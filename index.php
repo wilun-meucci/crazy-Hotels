@@ -66,7 +66,7 @@
                         if (isset($_POST['esci'])) {
                             #$_SESSION["login"] = false;
                             require("./php/logout.php");
-                            logout($_SESSION['user']->id);
+                            logout($_SESSION['user']);
                             header("location: ./php/logout.php");
                             #header("location: index.php");
 
