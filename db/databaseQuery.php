@@ -26,19 +26,19 @@
     function login($email,$psw) 
     {
         $sql = "SELECT * FROM utenti where email = '$email' and  passwd='$psw'";
-        return query($sql);
+        return queryBool($sql);
         
     }
     function checkExistUser($id)
     {
         $sql = "SELECT * FROM utenti where email = '$id' OR idUtente = '$id' OR nome = '$id' OR cognome= '$id'";
-        return query($sql);
+        return queryBool($sql);
     }
     function getNumId()
     {
         $sql = "SELECT count(idUtente) FROM utenti";
         echo 'number: '.$sql;
-        return intval(query($sql));
+        return intval(queryBool($sql));
     }
     #ritorna il idUtente
     function getIdUSer($id)

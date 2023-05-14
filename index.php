@@ -95,7 +95,7 @@
                                 <img src="immagini/ciao6.jpg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="iconphoto/crazylogo2.png" class="d-block w-100" alt="...">
+                                <img src="immagini/ciao5.jpeg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
                                 <img src="iconphoto/crazylogo3.png" class="d-block w-100" alt="...">
@@ -151,9 +151,9 @@
                                                                         margin-top: 1%;">
                         </a>
                         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                            <li class="ms-3"><a style="color:antiquewhite;" href="#"><i class="bi bi-facebook"></i></a></li>
-                            <li class="ms-3"><a style="color:antiquewhite;" href="#"><i class="bi bi-instagram"></i></a></li>
-                            <li class="ms-3"><a style="color:antiquewhite;" href="#"><i class="bi bi-whatsapp"></i></a></li>
+                            <li class="ms-3"><a style="color:antiquewhite;" href="https://it-it.facebook.com" target="_blank"><i class="bi bi-facebook"></i></a></li>
+                            <li class="ms-3"><a style="color:antiquewhite;" href="https://www.instagram.com/accounts/login/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+                            <li class="ms-3"><a style="color:antiquewhite;" href="https://web.whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
                         </ul>
                     </footer>
                     </div>
