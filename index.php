@@ -32,13 +32,13 @@
                         $login = false;
                     }
                     else
-                        $login = $_SESSION["user"];    
+                        $login = $_SESSION["login"];    
 
                     if ($login) {
                         echo "
                         <div class='dropdown'>
                         <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-bs-toggle='dropdown' aria-expanded='false'>
-                        ".$_SESSION['nameUser']." 
+                        ".$_SESSION['user']["nome"]." 
                         </button>
                             <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
                                 <li><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></li>
@@ -66,8 +66,9 @@
                         if (isset($_POST['esci'])) {
                             #$_SESSION["login"] = false;
                             require("./php/logout.php");
-                            logout($_SESSION['user']);
-                            header("location: ./php/logout.php");
+                            #header("location: ./php/logout.php");
+                            logout();
+                            
                             #header("location: index.php");
 
                             #$_SERVER['PHP_SELF'];
@@ -112,7 +113,7 @@
                     </div>
                         <br><br>
                     <?php
-                         require ( "./db/connectDB.php");
+                        require ( "./db/connectDB.php");
                         $_SESSION["db"] = $connessione = connectDB();
                         $q = "SELECT nome, descrizione FROM hotel LIMIT 4";
                         $result = $_SESSION["db"] ->query($q);

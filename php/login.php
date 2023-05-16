@@ -18,12 +18,19 @@
         if(login($_POST["email"] , hash('sha256',$_POST["password"])))
         {
             $mail = $_POST["email"];
+            $user = getUSer($mail)->fetch_assoc();
+            $_SESSION["user"] = $user;
+            $_SESSION["login"] = true;
+            header("location: ../index.php");
+            /*
             $_SESSION["idUser"] =$idUser = getIdUSer($mail);
             $_SESSION["nameUser"] =$nameUser = getNameUSer($idUser);
             #ritorna al index dopo aver fatto il login e mette login a true per cambiare la visualizzazione nel index nella navbar
             $_SESSION["login"] = true;
             $_SESSION["user"] = $idUser;
             header("location: ../index.php");
+
+            */
         }
         else 
         {
