@@ -60,6 +60,7 @@
     {
         return getUSer($id)->fetch_assoc()["nome"];
     }
+    
     function cardName()
     {
         global $connessione;
