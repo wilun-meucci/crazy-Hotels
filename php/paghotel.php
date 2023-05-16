@@ -12,6 +12,18 @@
 </head>
 <body style="background-color: burlywood;">
 
+ <?php
+                        require ( "../db/connectDB.php");
+                        session_start();
+                        $_SESSION["db"] = $connessione = connectDB();
+                        $q = "SELECT * FROM hotel WHERE nome = " .$_SESSION['nome']. " ";
+                        $result = $_SESSION["db"] ->query($q);
+
+                        while ($row = $result->fetch_assoc()) {
+                         echo "<h1>". $row['nome'] ." </h1>" ;
+        }
+                    ?>
+
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
