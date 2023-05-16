@@ -41,7 +41,7 @@
                         ".$_SESSION['user']["nome"]." 
                         </button>
                             <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
-                                <li><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></li>
+                                <li><a href='./html/leMiePrenotazioni.html'><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></a></li>
                                 <li><button class='dropdown-item' type='button'>fsffd</button></li>
                                 <form action='index.php' method='post'>
                                     <li>
@@ -113,12 +113,16 @@
                     <?php
                         require ( "./db/connectDB.php");
                         $_SESSION["db"] = $connessione = connectDB();
-                        $q = "SELECT nome, descrizione FROM hotel LIMIT 4";
+                        $q = "SELECT idhotel, nome, descrizione FROM hotel LIMIT 4";
                         $result = $_SESSION["db"] ->query($q);
 
                         while ($row = $result->fetch_assoc()) {
+
+                                $q1 ="SELECT i.url from immaginicamera i join camere c on c.idcamera = i.idcamera join hotel h on h.idcamera = c.idcamera  where idhotel = ".$row['idhotel']." LIMIT 1";
+                                $result1 = $_SESSION["db"] ->query($q1);
+                                
                          echo"<div class='card w-25 float-start'>
-                            <img src='iconphoto/crazylogo2.png' class='card-img-top '>
+                            <img src='".$result1->fetch_assoc()['url']."' class='card-img-top '>
                             <div class='card-body'>
                                 <h5 class='card-title'>". $row['nome'] ."</h5>
                                 <p class='card-text'>".$row['descrizione']."</p>

@@ -63,9 +63,11 @@ bordo-b{
 }
 
 .card{
-    height: 2400px;
+    height: 750px;
 }
-@media screen and (max-widht: 576px) {
-    
+@media only screen and (max-width: 767px) {
+    .card {
+    height: 1050px;
+    }
 }
 
