@@ -69,7 +69,6 @@
                             #header("location: ./php/logout.php");
                             logout();
                             header("location: index.php");
-
                             #$_SERVER['PHP_SELF'];
                         }
                     ?>
