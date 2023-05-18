@@ -77,5 +77,18 @@
                     </div>";
         }
     }
-    function exitsHotel
+    function exitsHotel($id)
+    {
+        $q = "SELECT * FROM hotel where nome ='$id'  or citta ='$id'  or  descrizione = '$id'  or indirizzo ='$id'  or  mail = '$id' or idHotel = '$id'" ;
+        return queryBool($q);
+    }
+
+    function getHotel($id)
+    {
+        global $connessione;
+        $q = "SELECT * FROM hotel where nome ='$id'  or citta ='$id'  or  descrizione = '$id'  or indirizzo ='$id'  or  mail = '$id' or idHotel = '$id'" ;
+        $result = $connessione ->query($q);
+        return $result->fetch_assoc();
+
+    }
 ?>
