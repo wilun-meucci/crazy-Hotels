@@ -41,7 +41,7 @@
                         ".$_SESSION['user']["nome"]." 
                         </button>
                             <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
-                                <li><a href='./html/leMiePrenotazioni.html'><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></a></li>
+                                <li><a href='./php/leMiePrenotazioni.php'><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></a></li>
                                 <li><button class='dropdown-item' type='button'>fsffd</button></li>
                                 <form action='index.php' method='post'>
                                     <li>
