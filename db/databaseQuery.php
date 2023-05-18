@@ -77,4 +77,5 @@
                     </div>";
         }
     }
+    function exitsHotel
 ?>

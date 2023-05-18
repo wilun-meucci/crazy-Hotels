@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
+
 <body style="background-color: burlywood;">
     <!--Cpmtomaasdgsdfsdf<-->
     <!--container-->
@@ -75,10 +76,10 @@
                 </div>
                 <!--searchBar-->
                 <div class="search">
-                    <form method="" class="bar-search">
-                    <input type="text" placeholder="dove vuoi andare ?" name="posto" id="posto">
-                    <button><i class="bi bi-search"></i></button>
-                     </form>
+                    <form method="post" class="bar-search"action="./test.php">
+                        <input type="text" placeholder="dove vuoi andare ?" name="posto" id="posto">
+                        <button><i class="bi bi-search"></i></button>
+                    </form>
                      <br><br><br><br><br><br><br><br>
                 </div>
 
