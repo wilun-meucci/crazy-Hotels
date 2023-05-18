@@ -25,18 +25,17 @@
                         $_SESSION['nome'] = $_GET['nome'];
                         $_SESSION["db"] = $connessione = connectDB();
                         $q = "SELECT * FROM hotel WHERE nome = '" .$_SESSION['nome']. "' ";
-                        $result = $_SESSION["db"] ->query($q);
-                        $q2 = "SELECT c.* from camere c JOIN hotel h ON c.idcamera = h.idcamera where h.nome= '" .$_SESSION['nome']. "' ";
-                        $result2 = $_SESSION["db"] -> query($q2);
-                        
+                        $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
+                        $q2 = "SELECT c.* from camere c JOIN hotel h ON c.idhotel = h.idhotel where h.nome= '" .$_SESSION['nome']. "' ";
+                        $result2 = $_SESSION["db"] -> query($q2) or die($_SESSION["db"] ->error);
+                        echo "<h1 class='titolo'>". $_SESSION['nome']." </h1>" ;
   // stamp camere non presneti in prenotazione
                         while ($row = $result->fetch_assoc()) {
                             while ($row1 = $result2->fetch_assoc()) {
-                                echo"".$row1['idCamera']."";
                             $q1 ="SELECT i.url from immaginicamera i join camere c on i.idCamera = c.idCamera  where c.idCamera = ".$row1['idCamera']." LIMIT 1";
                             $result1 = $_SESSION["db"] ->query($q1) or die($_SESSION["db"] ->error);
                             
-                         echo "<h1 class='titolo'>". $row['nome'] ." </h1>" ;
+                         
                          echo "
                          <div class='row'>
                          <div class='col-md-6'>
@@ -51,12 +50,15 @@
                             
                             echo"
                         </div>
+                        <a href=''><button>PRENOTA</button></a>
                          </div>
-                         </div>";
+                         
+                         </div>
+                         <br>";
                             }
                         }
                     ?>
-                    <a href=""><button>PRENOTA</button></a>
+                    
             </div>
             <div class="col-md-2">
                         
