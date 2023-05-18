@@ -104,12 +104,12 @@ CREATE TABLE scrivono
 insert into utenti(idUtente,nome,cognome,email, passwd) value ("1","Riccardo","Ilcoglione","ciao@gmail.com", SHA2("ciao",256));
 
 
-insert into camere value ("1", "quadrupla", "Suite imperial", "104", "4", "25", "Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…" );
+insert into camere value ("1", "quadrupla", "Suite imperial", "104", "4", "25", "3", "Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…" );
 insert into hotel value ("1", "Orto De Medici", "Via San Gallo 30", "Firenze", "4", "ortodeimedici@info", "0550621097", "Hotel Orto De Medici è un'ottima scelta per i viaggiatori che visitano Firenze.", "1");
 insert into immaginiCamera values (default, "1" , "https://cdn-ca.dg1.services/6/270/5199/cL-23R184l3974r2433z0.4801304347826087:rw1920h1080/QUADRUPLA%20LUXURY%20VILLA%20IMPERINAIMG_0013.JPG");
 
 
-insert into camere value ("2", "doppia", "Lezzona", "133", "2", "15", "Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…" );
+insert into camere value ("2", "doppia", "Lezzona", "133", "2", "15", "2","Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…" );
 insert into immaginiCamera values (default, "2", "https://hotelberna.com/wp-content/uploads/sites/10/slide-1-2.jpg");
 insert into immaginiCamera values(default, "2" , "https://hotelberna.com/wp-content/uploads/sites/10/slide-2-2.jpg");
 insert into hotel value ("2", "Hotel Berna", "Via Napo Torriani 18", "Milano", "3", "hotelberna@info", "0450829097", "Se cercate un hotel a Milano, sia per lavoro che per piacere, l'Hotel Berna è quello che fa per voi.", "2");
