@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+
+.titolo {
+     font-family: 'Noto Serif KR', serif;
+}
+
+.info {
+    background-color: aliceblue;
+    border-radius: 10px;
+}

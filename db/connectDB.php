@@ -5,7 +5,7 @@
         $username = "root";
         $password = "";
         $dbname = "crazyhotels";
-        $connessione = new mysqli($servername, $username, $password, $dbname);
+        $connessione = new mysqli($servername, $username, $password, $dbname) or die($mysqli->error);
         if ($connessione->connect_error) 
         {
             #aggiungere un visuallizazione migliore

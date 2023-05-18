@@ -114,21 +114,24 @@
                         require ( "./db/connectDB.php");
                         $_SESSION["db"] = $connessione = connectDB();
                         $q = "SELECT idhotel, nome, descrizione FROM hotel LIMIT 4";
-                        $result = $_SESSION["db"] ->query($q);
+                        $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
 
                         while ($row = $result->fetch_assoc()) {
 
-                                $q1 ="SELECT i.url from immaginicamera i join camere c on c.idcamera = i.idcamera join hotel h on h.idcamera = c.idcamera  where idhotel = ".$row['idhotel']." LIMIT 1";
+                                $q1 ="SELECT i.url from immaginicamera i join camere c on c.idhotel = i.idhotel join hotel h on h.idcamera = c.idcamera  where idhotel = ".$row['idhotel']." LIMIT 1";
                                 $result1 = $_SESSION["db"] ->query($q1);
                                 
-                         echo"<form action='./php/paghotel.php' method='POST'>
+                         echo"
+                        
                             <div class='card w-25 float-start'>
-                            <img src='".$result1->fetch_assoc()['url']."' class='card-img-top '>
+                            <img src='".$result1->fetch_assoc()['url'] or die($_SESSION["db"] ->error)."' class='card-img-top '>
                             <div class='card-body'>
+                                <a href='php/paghotel.php?nome=".$row['nome']."'>
                                 <h5 class='card-title'>". $row['nome'] ."</h5>
+                                </a>
                                 <p class='card-text'>".$row['descrizione']."</p>
                             </div>
-                    </div></form>";
+                    </div>";
         }
                     ?>
                 </div>
@@ -138,7 +141,7 @@
             <!--Footer-->
 
             <!--Sistemare il footer per averlo completo-->
-
+        
             <div class="footer position-absolute b-0">
                 <div class="row">
                     <div class="col-md-3">
