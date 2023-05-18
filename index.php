@@ -121,13 +121,14 @@
                                 $q1 ="SELECT i.url from immaginicamera i join camere c on c.idcamera = i.idcamera join hotel h on h.idcamera = c.idcamera  where idhotel = ".$row['idhotel']." LIMIT 1";
                                 $result1 = $_SESSION["db"] ->query($q1);
                                 
-                         echo"<a href='./php/paghotel.php'><div class='card w-25 float-start'>
+                         echo"<form action='./php/paghotel.php' method='POST'>
+                            <div class='card w-25 float-start'>
                             <img src='".$result1->fetch_assoc()['url']."' class='card-img-top '>
                             <div class='card-body'>
                                 <h5 class='card-title'>". $row['nome'] ."</h5>
                                 <p class='card-text'>".$row['descrizione']."</p>
                             </div>
-                    </div></a>";
+                    </div></form>";
         }
                     ?>
                 </div>
