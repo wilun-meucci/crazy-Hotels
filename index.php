@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Crazy Hotels</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/searchbar.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/searchbar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
 
 <body style="background-color: burlywood;">
-    <!--Cpmtomaasdgsdfsdf<-->
+    <!--Cpmtomaasdgsdfsdf-->
     <!--container-->
     <div class="container-fluid text-center position-relative" style="min-height: 130vh;">
         <div class="row">
@@ -114,18 +114,18 @@
                     <?php
                         require ( "./db/connectDB.php");
                         $_SESSION["db"] = $connessione = connectDB();
-                        $q = "SELECT idhotel, nome, descrizione FROM hotel LIMIT 4";
+                        $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel GROUP BY h.idhotel LIMIT 4";
                         $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
 
                         while ($row = $result->fetch_assoc()) {
 
-                                $q1 ="SELECT i.url from immaginicamera i join camere c on c.idhotel = i.idhotel join hotel h on h.idcamera = c.idcamera  where idhotel = ".$row['idhotel']." LIMIT 1";
+                                $q1 ="SELECT i.url from immaginicamera i join camere c on c.idcamera = i.idcamera join hotel h on h.idhotel = c.idhotel  where h.idhotel = ".$row['idhotel']." LIMIT 1";
                                 $result1 = $_SESSION["db"] ->query($q1);
                                 
                          echo"
                         
                             <div class='card w-25 float-start'>
-                            <img src='".$result1->fetch_assoc()['url'] or die($_SESSION["db"] ->error)."' class='card-img-top '>
+                            <img src='".$result1->fetch_assoc()['url']."' class='card-img-top '>
                             <div class='card-body'>
                                 <a href='php/paghotel.php?nome=".$row['nome']."'>
                                 <h5 class='card-title'>". $row['nome'] ."</h5>
