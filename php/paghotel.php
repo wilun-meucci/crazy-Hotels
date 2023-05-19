@@ -46,8 +46,12 @@
                             <h1>Nome camera</h1>
                             ";
                             
-                                echo"<p1>".$row1['nomeCamera']."</p1>";
-                            
+                                echo"<p1>".$row1['nomeCamera']."</p1> <br>";
+                                echo"<h5>numero stanza: </h5><p1>".$row1['numeroCamera']."</p1> <br>";
+                                echo"<h5>numero letti: </h5><p1>".$row1['numeroLetti']."</p1> <br>";
+                                echo"<h5>metri quadrati: </h5><p1>".$row1['metriQuadrati']."</p1> <br>";
+                                echo"<h5>posti totali: </h5><p1>".$row1['postitotali']."</p1> <br>";
+                                echo"<h5>descrizione: </h5><p1>".$row1['descrizione']."</p1> <br>";
                             echo"
                         </div>
                         <a href=''><button>PRENOTA</button></a>

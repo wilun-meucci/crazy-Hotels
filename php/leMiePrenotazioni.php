@@ -90,8 +90,8 @@
 
                         while ($row = $result->fetch_assoc()) {
 
-                                $q1 ="SELECT i.url from immaginicamera i join camere c on c.idcamera = i.idcamera join hotel h on h.idcamera = c.idcamera  where idhotel = ".$row['idhotel']." LIMIT 1";
-                                $result1 = $_SESSION["db"] ->query($q1);
+                                $q1 ="SELECT i.url from immaginicamera i join camere c on c.idcamera = i.idcamera join hotel h on h.idhotel = c.idhotel  where idhotel = ".$row['idhotel']." LIMIT 1";
+                                $result1 = $_SESSION["db"] ->query($q1) or die($_SESSION["db"] ->error);
                                 
                          echo"<form action='./php/paghotel.php' method='POST'>
                             <div class='card w-25 float-start'>

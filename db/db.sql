@@ -26,7 +26,7 @@ CREATE TABLE camere
     nomeCamera varchar(255),
     numeroCamera varchar(255),
     numeroLetti varchar(255),
-    mertriQuadrati varchar(255),
+    metriQuadrati varchar(255),
     postitotali varchar(255),
     descrizione varchar(255),
     idHotel varchar(255),
@@ -106,13 +106,26 @@ insert into utenti(idUtente,nome,cognome,email, passwd) value ("1","Riccardo","I
 
 insert into hotel value ("1", "Orto De Medici", "Via San Gallo 30", "Firenze", "4", "ortodeimedici@info", "0550621097", "Hotel Orto De Medici è un'ottima scelta per i viaggiatori che visitano Firenze.");
 insert into hotel value ("2", "Hotel Berna", "Via Napo Torriani 18", "Milano", "3", "hotelberna@info", "0450829097", "Se cercate un hotel a Milano, sia per lavoro che per piacere, l'Hotel Berna è quello che fa per voi.");
+insert into hotel values("3","Park Grand Paddington Court","Devonshire Terrace Paddinngton 27","Londra","4","ParkGrandPaddingtonCourt@info","04218296793","questo alloggio offre i migliori comfort di Londra e un ottimo rapporto qualità-prezzo.");
+insert into hotel values("4","Hotel Italia","Viale Cavour 67","Siena","3","HotelItalia@info","4573829574","Hotel alle porte del Centro Storico di Siena completamente rinnovato nelle aree comuni.");
+insert into hotel values("5","Hotel Bellavista","Via Carnia 34","Lignano Sabbiadoro","4","HotelBellavista@info","35389463894","L' hotel Bellavista è passato di generazione in generazione, i nostri nonni prima, e poi i nostri genitori ci hanno lasciato in eredità.");
+insert into hotel values("6","Hotel Maritan","Via Gattamelata 34","Padova","3","HotelMaritan@info","234234765869","Situato a 5 minuti a piedi dalla Basilica di Sant'Antonio, il Maritan offre un parcheggio , un centro benessere olistico e camere moderne.");
+insert into hotel values("7","Novo Hotel Rossi","Via delle Coste 2","Verona","3","NovoHotelRossi@info","9674829384","il Novo Hotel Rossi mette a disposizione 50 camere, doppie e triple, ed ambienti del tutto nuovi.");
 
 insert into camere value ("1", "quadrupla", "Suite imperial", "104", "4", "25", "3", "Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…","1" );
-insert into camere value ("3", "quadrupla", "ciccio", "103", "3", "3", "1", "Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…","1" );
+insert into camere value ("3", "quadrupla", "ciccio", "103", "3", "20", "4", "Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…","1" );
+insert into camere value ("4", "tripla", "Long Island", "69", "3", "15", "2", "Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…","3" );
+insert into camere value ("5", "doppia", "Francesco Totti", "97", "2", "10", "2", "Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…","4" );
+
 insert into immaginiCamera values (default, "1" , "https://cdn-ca.dg1.services/6/270/5199/cL-23R184l3974r2433z0.4801304347826087:rw1920h1080/QUADRUPLA%20LUXURY%20VILLA%20IMPERINAIMG_0013.JPG");
 insert into immaginiCamera values (default, "3" , "https://cdn-ca.dg1.services/6/270/5199/cL-23R184l3974r2433z0.4801304347826087:rw1920h1080/QUADRUPLA%20LUXURY%20VILLA%20IMPERINAIMG_0013.JPG");
+insert into immaginiCamera values (default, "4" , "https://cdn-ca.dg1.services/6/270/5199/cL-23R184l3974r2433z0.4801304347826087:rw1920h1080/QUADRUPLA%20LUXURY%20VILLA%20IMPERINAIMG_0013.JPG");
+insert into immaginiCamera values (default, "5" , "https://cdn-ca.dg1.services/6/270/5199/cL-23R184l3974r2433z0.4801304347826087:rw1920h1080/QUADRUPLA%20LUXURY%20VILLA%20IMPERINAIMG_0013.JPG");
 
 
 insert into camere value ("2", "doppia", "Lezzona", "133", "2", "15", "2","Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…","2" );
 insert into immaginiCamera values (default, "2", "https://hotelberna.com/wp-content/uploads/sites/10/slide-1-2.jpg");
 insert into immaginiCamera values(default, "2" , "https://hotelberna.com/wp-content/uploads/sites/10/slide-2-2.jpg");
+
+
+

@@ -16,7 +16,7 @@
 <body style="background-color: burlywood;">
     <!--Cpmtomaasdgsdfsdf-->
     <!--container-->
-    <div class="container-fluid text-center position-relative" style="min-height: 130vh;">
+    <div class="container-fluid text-center position-relative" style="min-height: 170vh;">
         <div class="row">
             <div class="col-md-2">
 
@@ -125,7 +125,8 @@
                          echo"
                         
                             <div class='card w-25 float-start'>
-                            <img src='".$result1->fetch_assoc()['url']."' class='card-img-top '>
+                            <img src='".$result1->fetch_assoc()['url']."' class='card-img-top' style:'height: 200px;
+                            width: 100%;'>
                             <div class='card-body'>
                                 <a href='php/paghotel.php?nome=".$row['nome']."'>
                                 <h5 class='card-title'>". $row['nome'] ."</h5>
@@ -152,7 +153,7 @@
                         <div class="col-md-4 d-flex align-items-center">
                         <span class="mb-1 mb-md-0" style="color:antiquewhite;">&copy; 2022 Company, Inc</span>
                         </div>
-                        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3">
+                        <a href="index.php" class="col-md-4 d-flex align-items-center justify-content-center mb-3">
                             <img src="iconphoto/crazylogo5.png"  style="width: 80px;
                                                                         height: 50px;
                                                                         float: left;
