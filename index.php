@@ -16,7 +16,7 @@
 <body style="background-color: burlywood;">
     <!--Cpmtomaasdgsdfsdf-->
     <!--container-->
-    <div class="container-fluid text-center position-relative" style="min-height: 170vh;">
+    <div class="container-fluid text-center position-relative" style="min-height: 160vh;">
         <div class="row">
             <div class="col-md-2">
 
@@ -76,7 +76,7 @@
                 </div>
                 <!--searchBar-->
                 <div class="search">
-                    <form method="post" class="bar-search"action="./test.php">
+                    <form method="post" class="bar-search" action="./php/search.php">
                         <input type="text" placeholder="dove vuoi andare ?" name="posto" id="posto">
                         <button><i class="bi bi-search"></i></button>
                     </form>
@@ -92,13 +92,13 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="immagini/ciao6.jpg" class="d-block w-100" alt="...">
+                                <img src="immagini/prova.jpg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="immagini/ciao5.jpeg" class="d-block w-100" alt="...">
+                                <img src="immagini/fotocopertinamare.jpg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="iconphoto/crazylogo3.png" class="d-block w-100" alt="...">
+                                <img src="immagini/ciao.jpg" class="d-block w-100" alt="...">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
