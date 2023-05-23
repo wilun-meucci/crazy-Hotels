@@ -3,7 +3,7 @@
     function connectDB() {
         $servername = "localhost";
         $username = "root";
-        $password = "";
+        $password = "Rik_200429";
         $dbname = "crazyhotels";
         $connessione = new mysqli($servername, $username, $password, $dbname) or die($connessione->error);
         if ($connessione->connect_error) 

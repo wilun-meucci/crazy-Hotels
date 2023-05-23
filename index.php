@@ -83,6 +83,17 @@
                      <br><br><br><br><br><br><br><br>
                 </div>
 
+                <br>
+                <!--Scegli date -->
+                <div> 
+                <label for="chechin">Data Check-in</label>
+                <input type="date" name="checkin" class="datepicker" id="checkin">
+                <label for="checkout">Data Check-out</label>
+                <input type="date" name="checkout" class="datepicker" id="checkout">
+                <label for="numViaggiatori">Persone</label>
+                <input type="number" name="numViaggiatori" id="numViaggiatori">
+                </div>
+
                 <!--Carosel-->
                     <div id="carouselExampleIndicators" class="carousel slide w-100" data-bs-ride="true">
                         <div class="carousel-indicators">
@@ -114,7 +125,7 @@
                     <?php
                         require ( "./db/connectDB.php");
                         $_SESSION["db"] = $connessione = connectDB();
-                        $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel GROUP BY h.idhotel LIMIT 4";
+                        $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel LIMIT 4";
                         $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
 
                         while ($row = $result->fetch_assoc()) {
