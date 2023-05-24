@@ -38,7 +38,7 @@
                         WHERE (p.dataCheckIn <= '".$_SESSION['checkin']."' AND p.dataCheckOut >= '".$_SESSION['checkin']."')
                             OR (p.dataCheckIn <= '".$_SESSION['checkout']."' AND p.dataCheckOut >= '".$_SESSION['checkout']."')
                             OR ('".$_SESSION['checkin']."' <= p.dataCheckIn AND '".$_SESSION['checkout']."' >= p.dataCheckIn)
-                    )  AND h.citta = '".$_SESSION['posto']."'";
+                    ) AND h.nome = '".$_SESSION['nome']."'";
                 } else {
                     $q2 = "SELECT c.*, h.idHotel
                     FROM hotel h join camere c on c.idhotel = h.idhotel
@@ -49,7 +49,7 @@
                         WHERE (p.dataCheckIn <= '".$_SESSION['checkin']."' AND p.dataCheckOut >= '".$_SESSION['checkin']."')
                             OR (p.dataCheckIn <= '".$_SESSION['checkout']."' AND p.dataCheckOut >= '".$_SESSION['checkout']."')
                             OR ('".$_SESSION['checkin']."' <= p.dataCheckIn AND '".$_SESSION['checkout']."' >= p.dataCheckIn)
-                    )  AND h.citta = '".$_SESSION['posto']."'
+                    )  AND h.citta = '".$_SESSION['posto']."' AND h.nome = '".$_SESSION['nome']."'
                     AND EXISTS (
                         SELECT c.idCamera
                         FROM camere c

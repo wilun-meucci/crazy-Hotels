@@ -10,6 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    
+
     <title>prenotazioni </title>
 </head>
 
@@ -20,7 +22,7 @@ function convert($var) {
 }
 
 ?>
-<body>
+<body style="background-color: burlywood;">
     <!--Cpmtomaasdgsdfsdf<-->
     <!--container-->
     <div class="container-fluid text-center position-relative" style="min-height: 130vh;">
@@ -32,7 +34,7 @@ function convert($var) {
 
                 <!--navbar-->
                 <div class="navbar">
-                    <a href="../index.php"><img src="../iconphoto/crazylogo.png" alt="3" id="logonav"></a>
+                    <a href="../index.php"><img src="../iconphoto/crazylogo5.png" alt="3" id="logonav"></a>
                     <?php
                     require_once "../db/connectDB.php";
                     session_start();
@@ -43,26 +45,28 @@ function convert($var) {
                         $login = $_SESSION["login"];
 
                         if (isset($_POST['idCamera']))
+                        {
                             $_SESSION['idCamera'] = $_POST['idCamera'];
 
 
-                        // Converte l'oggetto DateTime in una stringa nel formato "YYYY-MM-DD"
-                        
-                        $checkin = convert($_SESSION['checkin']);
-                        $checkout = convert($_SESSION['checkout']);
-
-                        
-                        // inserimento prenotazione
-                        $q = "INSERT INTO prenotazioni VALUES (default, '$checkin','$checkout','" . $_SESSION['idCamera'] . "','" . $_SESSION['user']['idUtente'] . "')";
-                        // $result = $connessione ->query($q);
-                        echo $q;
-                        $result = $connessione->query($q) or die("fail");
-
-                        if ($result === TRUE) {
-                            echo "ok";
-                        } else {
-                            echo "(/db/databaseInsert.php/registration/else)Error: " . $insertInto . "<br>" . $connessione->error;
+                            // Converte l'oggetto DateTime in una stringa nel formato "YYYY-MM-DD"
+                            
+                            $checkin = convert($_SESSION['checkin']);
+                            $checkout = convert($_SESSION['checkout']);
+    
+                            
+                            // inserimento prenotazione
+                            $q = "INSERT INTO prenotazioni VALUES (default, '$checkin','$checkout','" . $_SESSION['idCamera'] . "','" . $_SESSION['user']['idUtente'] . "')";
+                            // $result = $connessione ->query($q);
+                            $result = $connessione->query($q) or die("fail");
                         }
+
+                        if(isset($_POST['idPrenotazione'])){
+                            $q = "DELETE FROM prenotazioni WHERE idPrenotazione = '".$_POST['idPrenotazione']."'";
+                            // $result = $connessione ->query($q);
+                            $result = $connessione->query($q) or die("fail");
+                        }
+                           
                     }
 
 
@@ -114,16 +118,19 @@ function convert($var) {
 
 
                 <?php
-                $q = "SELECT * FROM prenotazioni WHERE idUtente = '" . $_SESSION['user']['idUtente'] . "'";
+                $q = "SELECT p.*, h.* FROM prenotazioni p join camere c on p.idcamera = c.idcamera join hotel h on h.idhotel = c.idhotel WHERE p.idUtente = '" . $_SESSION['user']['idUtente'] . "'";
                 $result = $connessione->query($q);
 
                 while ($row = $result->fetch_assoc()) {
-
+                    echo "<br>";
                     echo "
-                            <div>
-                           <h1> " . $row['dataCheckIn'] . " </h1>
-                            
-                    </div>";
+                            <div class='prenotazioni' style='background-color: white; padding: 1rem; border-radius: 2%; text-align:left; font-size:20px'>
+                            ".$row['nome'].",  " . $row['citta'] . "  Dal " . $row['dataCheckIn'] . " Al " . $row['dataCheckOut'] . "
+                            <form method='post'>
+                                   <button type='submit' class='btn btn-danger'>Cancella</button>
+                                    <input type='hidden' name='idPrenotazione' value='".$row['idPrenotazione']."'>
+                                    </form> 
+                            </div>";
                 }
                 ?>
             </div>
