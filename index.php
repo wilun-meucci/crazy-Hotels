@@ -15,12 +15,15 @@
 </head>
 <?php
  session_start();
+ $_SESSION['checkin'] = "2022-10-23";
+ $_SESSION['checkout'] = "2022-10-23";
+
+
  require_once "./db/connectDB.php";
 
 if(isset($_POST['posto']))
 {
     $_SESSION['posto'] = $_POST['posto'];
-    print_r($_SESSION);
     echo $_POST['checkin'];
 }
 
@@ -181,7 +184,8 @@ if(isset($_POST['posto']))
                             
                         }
                         else{
-                            $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel  GROUP BY c.idHotel";
+                            echo "sono qui";
+                            $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel GROUP BY c.idHotel";
                             $result = $connessione ->query($q) or die($connessione ->error);
                             if($result->num_rows == 0)
                                     echo "<h2>Non Sono Presenti Hotel in Queste Date o In Questa Città</h2>";
