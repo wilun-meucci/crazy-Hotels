@@ -14,9 +14,28 @@
     
 </head>
 <?php
+    function eliminaCookie() {
+    // Recupera l'elenco dei cookie
+    $cookies = $_COOKIE;
+    // Scandisce l'elenco dei cookie e li elimina
+    foreach ($cookies as $nome => $valore) {
+        setcookie($nome, '', time() - 3600, '/');
+    }
+}
+
+// Verifica se il pulsante di eliminazione è stato cliccato
+if (isset($_POST['elimina_cookie'])) {
+    eliminaCookie();
+    header("location: index.php");
+}
+
+
+?>
+<?php
  session_start();
  require_once "./db/connectDB.php";
-
+print_r($_SESSION);
+print_r($_POST);
 if(isset($_POST['posto']))
 {
     $_SESSION['posto'] = $_POST['posto'];
@@ -26,6 +45,15 @@ if(isset($_POST['posto']))
 
 ?>
 <body style="background-color: burlywood;">
+<h1>Elimina Cookie</h1>
+    <form method="post">
+        <input type="submit" name="elimina_cookie" value="Elimina Cookie">
+    </form>
+
+    <h1>Mostra tutti gli hotel</h1>
+    <form method="post">
+        <input type="submit" name="allHotel" value="allHotel">
+    </form>
     <!--Cpmtomaasdgsdfsdf-->
     <!--container-->
     <div class="container-fluid text-center position-relative" style="min-height: 160vh;">
