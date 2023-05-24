@@ -4,7 +4,7 @@ CREATE DATABASE crazyhotels;
 USE crazyhotels;
 
 
-
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 
 CREATE TABLE hotel
 (
@@ -131,7 +131,7 @@ INSERT INTO `camere` (`idCamera`, `tipo`, `nomeCamera`, `numeroCamera`, `numeroL
 ('9', 'quadrupla', 'imperial', '240', '3', '25', 4, 'perfetta per te e la tua famiglia', '6');
 
 INSERT INTO `immaginiCamera` (`idImg`, `idCamera`, `url`) VALUES
-(0, '1', 'https://cdn-ca.dg1.services/6/270/5199/cL-23R184l3974r2433z0.4801304347826087:rw1920h1080/QUADRUPLA%20LUXURY%20VILLA%20IMPERINAIMG_0013.JPG'),
+(16, '1', 'https://cdn-ca.dg1.services/6/270/5199/cL-23R184l3974r2433z0.4801304347826087:rw1920h1080/QUADRUPLA%20LUXURY%20VILLA%20IMPERINAIMG_0013.JPG'),
 (1, '3', 'https://www.hoteldaltavilla.it/wp-content/uploads/2016/10/camera7-1196x598.jpg'),
 (2, '6', 'https://www.hotelcentrotrieste.it/assets/images/header/camere/tripla/tripla_2019.jpg'),
 (3, '20', 'https://baiadelsolehotel.it/wp-content/uploads/2016/02/CAMERA-SINGOLA-BAIA-DEL-SOLE-HOTEL-MARINA-DI-RAGUSA-1-3.jpg'),
