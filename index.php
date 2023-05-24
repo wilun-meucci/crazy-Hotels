@@ -177,7 +177,7 @@
                                     <p class='card-text'>".$row['descrizione']."</p>
                                 </div>
                         </div>";
-            }
+                            }
                                 
                             }
                             else {
