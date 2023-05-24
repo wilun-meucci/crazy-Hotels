@@ -35,18 +35,17 @@ CREATE TABLE camere
 
 CREATE TABLE utenti
 (
-    idUtente varchar(255),
+    idUtente varchar(255) primary key,
     nome varchar(255),
     cognome varchar(255),
     email varchar(255),
     passwd varchar(255),
     sesso varchar(255),
     dataNascita date,
-    numeroTelefono varchar(13)
+    numeroTelefono varchar(13),
     CHECK(passwd REGEXP"^[a-fA-F0-9]{64}$"),
     unique (email),
-    unique (idUtente),
-    primary key(idUtente)
+    unique (idUtente)
 );
 
 CREATE TABLE prenotazioni
