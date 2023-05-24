@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     
 </head>
+
 <?php
     function eliminaCookie() {
     // Recupera l'elenco dei cookie
@@ -33,14 +34,16 @@ if (isset($_POST['elimina_cookie'])) {
 ?>
 <?php
  session_start();
+ $_SESSION['checkin'] = "2022-10-23";
+ $_SESSION['checkout'] = "2022-10-23";
+
+
  require_once "./db/connectDB.php";
 print_r($_SESSION);
 print_r($_POST);
 if(isset($_POST['posto']))
 {
     $_SESSION['posto'] = $_POST['posto'];
-    print_r($_SESSION);
-    echo $_POST['checkin'];
 }
 
 ?>
@@ -56,7 +59,7 @@ if(isset($_POST['posto']))
     </form>
     <!--Cpmtomaasdgsdfsdf-->
     <!--container-->
-    <div class="container-fluid text-center position-relative" style="min-height: 160vh;">
+    <div class="container-fluid text-center position-relative" style="min-height: 200vh;">
     <div class="row">
             <div class="col-md-2">
 
@@ -112,15 +115,9 @@ if(isset($_POST['posto']))
                     ?>
                 </div>
                 <!--searchBar-->
-                <div class="search">
-                    <form method="post" class="bar-search">
-                        <input type="text" placeholder="dove vuoi andare ?" name="posto" id="posto">
-                        <button><i class="bi bi-search"></i></button>
-                    
-                     <br><br><br><br><br><br><br><br>
-                </div>
-
-                <br>
+                <div>
+                    <form method="post" class="search" >
+                        <input type="text" placeholder="dove vuoi andare ?" name="posto" id="posto" class="input-group-text">
                 <!--Scegli date -->
 
                 <?php
@@ -130,21 +127,26 @@ if(isset($_POST['posto']))
                         $_SESSION['checkout'] = $_POST['checkout'];
                         $_SESSION['numViaggiatori'] = $_POST['numViaggiatori'];
 
-                        echo "<label> Data Check-in :</label> ".$_SESSION['checkin']." 
-                        <label> Data Check-Out : </label> ".$_SESSION['checkout']." 
-                        <label> Numero Persone : </label> ".$_SESSION['numViaggiatori']."
-                        <a href='./index.php'><button type='submit' class='btn btn-primary'>Cambia</button></a>";
+                        echo "<div><label style='color: aliceblue;'> Data Check-in : ".$_SESSION['checkin']." </label>
+                        <label style='color: aliceblue;'> Data Check-Out : ".$_SESSION['checkout']." </label>
+                        <label style='color: aliceblue;'> Numero Persone :  ".$_SESSION['numViaggiatori']." </label>
+                        <a href='./index.php'><button type='submit' class='btn btn-primary'>Cambia</button></a>
+                        </div></div>
+                        ";
+                        
                     }
                     else
                     {
                         echo "<div>
-                        <label for='checkin'>Data Check-in</label>
-                        <input required type='date' name='checkin' class='datepicker' id='checkin'>
-                        <label for='checkout'>Data Check-out</label>
-                        <input required type='date' name='checkout' class='datepicker' id='checkout'>
-                        <label for='numViaggiatori'>Persone</label>
+                        <label for='checkin' style='color: aliceblue;'>Data Check-in</label>
+                        <input required type='date' name='checkin' class='datepicker' id='checkin' class='input-group-text'>
+                        <label for='checkout' style='color: aliceblue;'>Data Check-out</label>
+                        <input required type='date' name='checkout' class='datepicker' id='checkout' class='input-group-text'>
+                        <label for='numViaggiatori' style='color: aliceblue;'>Persone</label>
                         <input required type='number' name='numViaggiatori' id='numViaggiatori'>
-                        </div>
+                        <button style='border-radius:10px' class='btn btn-light'><i class='bi bi-search'></i></button>
+                        </div><br><br><br></div>
+                        
                         </form>";
                         
                     }
@@ -209,7 +211,8 @@ if(isset($_POST['posto']))
                             
                         }
                         else{
-                            $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel  GROUP BY c.idHotel";
+                            echo "sono qui";
+                            $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel GROUP BY c.idHotel";
                             $result = $connessione ->query($q) or die($connessione ->error);
                             if($result->num_rows == 0)
                                     echo "<h2>Non Sono Presenti Hotel in Queste Date o In Questa Città</h2>";

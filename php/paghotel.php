@@ -17,13 +17,12 @@
     <div class="container-fluid text-center position-relative">
         <div class="row">
             <div class="col-md-2">
-
+            <a href="../index.php"><button class="btn btn-primary mt-3">Indietro</button></a>
             </div>
             <div class="col-md-8">
                 <?php
                 require_once "../db/connectDB.php";
 
-                require("../db/connectDB.php");
                 session_start();
                 $_SESSION['nome'] = $_GET['nome'];
                 $q = "SELECT * FROM hotel WHERE nome = '" . $_SESSION['nome'] . "' ";
@@ -39,7 +38,7 @@
                         WHERE (p.dataCheckIn <= '".$_SESSION['checkin']."' AND p.dataCheckOut >= '".$_SESSION['checkin']."')
                             OR (p.dataCheckIn <= '".$_SESSION['checkout']."' AND p.dataCheckOut >= '".$_SESSION['checkout']."')
                             OR ('".$_SESSION['checkin']."' <= p.dataCheckIn AND '".$_SESSION['checkout']."' >= p.dataCheckIn)
-                    )  AND h.citta = '".$_SESSION['posto']."'";
+                    ) AND h.nome = '".$_SESSION['nome']."'";
                 } else {
                     $q2 = "SELECT c.*, h.idHotel
                     FROM hotel h join camere c on c.idhotel = h.idhotel
@@ -50,7 +49,7 @@
                         WHERE (p.dataCheckIn <= '".$_SESSION['checkin']."' AND p.dataCheckOut >= '".$_SESSION['checkin']."')
                             OR (p.dataCheckIn <= '".$_SESSION['checkout']."' AND p.dataCheckOut >= '".$_SESSION['checkout']."')
                             OR ('".$_SESSION['checkin']."' <= p.dataCheckIn AND '".$_SESSION['checkout']."' >= p.dataCheckIn)
-                    )  AND h.citta = '".$_SESSION['posto']."'
+                    )  AND h.citta = '".$_SESSION['posto']."' AND h.nome = '".$_SESSION['nome']."'
                     AND EXISTS (
                         SELECT c.idCamera
                         FROM camere c

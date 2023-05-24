@@ -131,22 +131,22 @@ INSERT INTO `camere` (`idCamera`, `tipo`, `nomeCamera`, `numeroCamera`, `numeroL
 ('9', 'quadrupla', 'imperial', '240', '3', '25', 4, 'perfetta per te e la tua famiglia', '6');
 
 INSERT INTO `immaginiCamera` (`idImg`, `idCamera`, `url`) VALUES
-(16, '1', 'https://cdn-ca.dg1.services/6/270/5199/cL-23R184l3974r2433z0.4801304347826087:rw1920h1080/QUADRUPLA%20LUXURY%20VILLA%20IMPERINAIMG_0013.JPG'),
-(1, '3', 'https://www.hoteldaltavilla.it/wp-content/uploads/2016/10/camera7-1196x598.jpg'),
-(2, '6', 'https://www.hotelcentrotrieste.it/assets/images/header/camere/tripla/tripla_2019.jpg'),
-(3, '20', 'https://baiadelsolehotel.it/wp-content/uploads/2016/02/CAMERA-SINGOLA-BAIA-DEL-SOLE-HOTEL-MARINA-DI-RAGUSA-1-3.jpg'),
-(4, '12', 'https://media-cdn.tripadvisor.com/media/photo-s/0e/24/02/7c/camera-quadrupla.jpg'),
-(5, '5', 'https://www.gardaland.it/media/3e2bmaob/gh-classicdoppia-010.jpg'),
-(6, '17', 'https://www.amenitiz.com/wp-content/uploads/2022/10/ydrzmoahdob1e441xw0o.jpg'),
-(7, '10', 'https://www.parkhotelargento.com/immagini/camera-doppia-con-balcone-loggiato-parkhotelargento-resort-spa-levanto.jpg'),
-(8, '14', 'https://www.gardaland.it/media/wcyljfqz/gh-classicdoppia-003.jpg'),
-(9, '15', 'https://www.hotelsilvermilano.com/wp-content/uploads/sites/12/2019/07/hotel_silver_camere_doppia_gallery_02.jpg'),
-(10, '16', 'https://www.hotelristorantelapineta.com/images/camere/main/camera-tripla-hotel-la-pineta-marina-di-carrara.jpg'),
-(11, '18', 'https://www.hotelcentrotrieste.it/assets/images/header/camere/tripla/tripla_2019.jpg'),
-(12, '4', 'https://lancasterhotel.it/lancaster_upl/hotel/camera-tripla/camera-tripla-lancaster-hotel-milano-01.jpg'),
-(13, '11', 'https://www.hotel-spuntadimare.com/wp-content/uploads/sites/236/2020/12/Chambre-quadruple__006.jpg'),
-(14, '9', 'https://www.ortodeimedici.it/images/room/gallery/quadruple/orto-dei-medici-quadruple-01.jpg'),
-(15, '7', 'https://www.hotelromaflorence.com/sites/www.hotelromaflorence.com/files/styles/testata/public/images/Hotel_Roma_Firenze_DoppiaVista_FI008.jpg?itok=eGofrHl1');
+(16, '1', 'https://www.hotelamerican.it/wp-content/uploads/2020/08/doppia_classic_1-1920x1080.jpg'),
+(1, '3', 'https://mamacohotel.com/wp-content/uploads/2022/12/mamaco-camera002-01.jpg'),
+(2, '6', 'https://www.hotelamerican.it/wp-content/uploads/2020/08/junior_suite_canale_1-1920x1080.jpg'),
+(3, '20', 'https://www.negritella.it/images/slider/camere/01-camere-e-suite-hotel-negritella.jpg'),
+(4, '12', 'https://hotelvittoria.info/wp-content/uploads/2022/04/Camera-Junior-suite-header.jpg'),
+(5, '5', 'https://www.hotelciarnadoi.it/images/slider/suite-camere/04-ciarnadoi-design-and-suite-hotel.jpg'),
+(6, '17', 'https://www.capricehotel.it/wp-content/uploads/2021/03/Camera-doppia-Arancione.jpg'),
+(7, '10', 'https://www.capricehotel.it/wp-content/uploads/2021/03/Camera-doppia-Arancione.jpg'),
+(8, '14', 'https://www.champagnehotel.it/files/appartamenti/4/1.jpg'),
+(9, '15', 'https://www.crocedimaltaflorence.com/images/room-image/room-banner-1.jpg'),
+(10, '16', 'https://www.boutiquehotelinpiazza.com/wp-content/uploads/2019/04/Boutique_Hotel_Piazza_Signoria_Florence_Rooms_Giotto_slider_2.jpg'),
+(11, '18', 'https://www.hotelsaligari.com/files/appartamenti/14/_GUS0340.jpg'),
+(12, '4', 'https://www.gartenhotelmoser.com/fileadmin/_processed_/6/4/csm_DSC07424_421bb8c87e.jpg'),
+(13, '11', 'https://www.hvaltellina.it/media/imagecache/allegati/3627edee47/alpine-suite-vasca-1.jpg.jpg'),
+(14, '9', 'https://www.madrigale.it/fileadmin/_processed_/8/a/csm_camere-lago-di-garda-madrigale-rooms-overview-classic-trends_f290e432ef.jpg'),
+(15, '7', 'https://static.posthotel.it/images/content/1224581_71328_2_C_1920_1080_0_454459955/alexfilz-9975.jpg');
 
 
 

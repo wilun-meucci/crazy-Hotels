@@ -97,4 +97,10 @@ bordo-b{
     }
 }
 
+.prenotazioni{
+    width: 75%;
+    padding: 2rem;
+    background-color: green;
+    border-radius: 20%;
+}
 
