@@ -17,13 +17,12 @@
     <div class="container-fluid text-center position-relative">
         <div class="row">
             <div class="col-md-2">
-
+            <a href="../index.php"><button class="btn btn-primary mt-3">Indietro</button></a>
             </div>
             <div class="col-md-8">
                 <?php
                 require_once "../db/connectDB.php";
 
-                require("../db/connectDB.php");
                 session_start();
                 $_SESSION['nome'] = $_GET['nome'];
                 $q = "SELECT * FROM hotel WHERE nome = '" . $_SESSION['nome'] . "' ";
