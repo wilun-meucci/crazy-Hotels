@@ -13,6 +13,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
 
+<?php
+
+session_start();
+require ( "./db/connectDB.php");
+$_SESSION["db"] = $connessione = connectDB();
+if(isset($_POST['posto']))
+{
+    $_SESSION['posto'] = $_POST['posto'];
+}
+
+?>
 <body style="background-color: burlywood;">
     <!--Cpmtomaasdgsdfsdf-->
     <!--container-->
@@ -28,7 +39,6 @@
                     <a href="index.php"><img src="iconphoto/crazylogo5.png" alt="3" id="logonav"></a>
                     <?php
 
-                    session_start();
                     if (!isset($_SESSION["user"])) {
                         $login = false;
                     }
@@ -51,10 +61,7 @@
                                 </form>
                             </ul>
                         </div>
-
-                    
                         ";
-        
 
                     ?>
                     <?php
@@ -77,10 +84,10 @@
                 </div>
                 <!--searchBar-->
                 <div class="search">
-                    <form method="post" class="bar-search" action="./php/search.php">
+                    <form method="post" class="bar-search">
                         <input type="text" placeholder="dove vuoi andare ?" name="posto" id="posto">
                         <button><i class="bi bi-search"></i></button>
-                    </form>
+                    
                      <br><br><br><br><br><br><br><br>
                 </div>
 
@@ -98,6 +105,7 @@
                         <label> Data Check-Out : </label> ".$_SESSION['checkout']." 
                         <label> Numero Persone : </label> ".$_SESSION['numViaggiatori']."
                         <a href='./index.php'><button type='submit' class='btn btn-primary'>Cambia</button></a>";
+                        header('location: index.php');
                     }
                     else
                     {
@@ -109,9 +117,10 @@
                         <input required type='date' name='checkout' class='datepicker' id='checkout'>
                         <label for='numViaggiatori'>Persone</label>
                         <input required type='number' name='numViaggiatori' id='numViaggiatori'>
-                        <button type='submit' class='btn btn-primary'>Scegli</button>
                         </form>
-                        </div>";
+                        </div>
+                        </form>";
+                        
                     }
                 ?>
 
@@ -145,14 +154,40 @@
                     </div>
                         <br><br>
                     <?php
-                        require ( "./db/connectDB.php");
-                        $_SESSION["db"] = $connessione = connectDB();
         
-                        if(isset($_SESSION['numViagiatori'])){
-                            $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where c.postitotali <= ".$_SESSION['numViaggiatori']."";
+                        if(isset($_SESSION["posto"]) and isset($_SESSION['numViaggiatori']))
+                        {
+                            echo "posto e num";
+                            require("./db/databaseQuery.php");
+                            if(exitsHotel($_POST["posto"]))
+                            {
+
+                                $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where c.postitotali >= ".$_SESSION['numViaggiatori']." AND h.citta = '".$_SESSION["posto"]."'";
+                                $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
+                                
+                            }
+                            else {
+                                echo "non esiste";
+                            }
+                            
+                        }else if(isset($_SESSION['numViaggiatori'])){
+                            echo "num";
+                            $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where c.postitotali >= ".$_SESSION['numViaggiatori']."";
                             $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
+                        }else if(isset($_SESSION["posto"])){
+                            echo "posto";
+                            require("./db/databaseQuery.php");
+                            if(exitsHotel($_SESSION["posto"]))
+                            {
+                                $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where  h.citta = '".$_SESSION["posto"]."'";
+                                $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
+                            }
+                            else {
+                                echo "non esiste";
+                            }
                         }
                         else{
+                            echo "un ca";
                             $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel";
                             $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
                         }

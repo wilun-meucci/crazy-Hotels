@@ -1,6 +1,4 @@
 <?php
-    require ( "connectDB.php");
-    $_SESSION["db"] = $connessione = connectDB();
 
     # fa una query al db tramite mail or idUtente
     function getUSer($id)
