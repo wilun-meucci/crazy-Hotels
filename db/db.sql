@@ -27,7 +27,7 @@ CREATE TABLE camere
     numeroCamera varchar(255),
     numeroLetti varchar(255),
     metriQuadrati varchar(255),
-    postitotali varchar(255),
+    postitotali int,
     descrizione varchar(255),
     idHotel varchar(255),
     foreign key (idHotel) references hotel(idHotel)

@@ -54,7 +54,8 @@
 
                     
                         ";
-                    //<button class='dropdown-item' type='button' name='esci'>Esci</button>
+        
+
                     ?>
                     <?php
                     }
@@ -85,14 +86,35 @@
 
                 <br>
                 <!--Scegli date -->
-                <div> 
-                <label for="chechin">Data Check-in</label>
-                <input type="date" name="checkin" class="datepicker" id="checkin">
-                <label for="checkout">Data Check-out</label>
-                <input type="date" name="checkout" class="datepicker" id="checkout">
-                <label for="numViaggiatori">Persone</label>
-                <input type="number" name="numViaggiatori" id="numViaggiatori">
-                </div>
+
+                <?php
+                 if(isset($_POST['checkin']))
+                    {
+                        $_SESSION['checkin'] = $_POST['checkin'];
+                        $_SESSION['checkout'] = $_POST['checkout'];
+                        $_SESSION['numViaggiatori'] = $_POST['numViaggiatori'];
+
+                        echo "<label> Data Check-in :</label> ".$_SESSION['checkin']." 
+                        <label> Data Check-Out : </label> ".$_SESSION['checkout']." 
+                        <label> Numero Persone : </label> ".$_SESSION['numViaggiatori']."
+                        <a href='./index.php'><button type='submit' class='btn btn-primary'>Cambia</button></a>";
+                    }
+                    else
+                    {
+                        echo "<div>
+                        <form method='post'>
+                        <label for='chechin'>Data Check-in</label>
+                        <input required type='date' name='checkin' class='datepicker' id='checkin'>
+                        <label for='checkout'>Data Check-out</label>
+                        <input required type='date' name='checkout' class='datepicker' id='checkout'>
+                        <label for='numViaggiatori'>Persone</label>
+                        <input required type='number' name='numViaggiatori' id='numViaggiatori'>
+                        <button type='submit' class='btn btn-primary'>Scegli</button>
+                        </form>
+                        </div>";
+                    }
+                ?>
+
 
                 <!--Carosel-->
                     <div id="carouselExampleIndicators" class="carousel slide w-100" data-bs-ride="true">
@@ -125,7 +147,48 @@
                     <?php
                         require ( "./db/connectDB.php");
                         $_SESSION["db"] = $connessione = connectDB();
-                        $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel LIMIT 4";
+
+                        if(isset($_POST["posto"]))
+                        {
+                            
+                            session_start();
+                            require("../db/databaseQuery.php");
+                            if(exitsHotel($_POST["posto"]))
+                            {
+                                echo "<h1>".$_POST["posto"]."</h1>";
+
+                                $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where c.postitotali <= ".$_SESSION['numViaggiatori']." AND h.citta = '".$_POST["posto"]."'";
+                                $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
+
+                                while ($row = $result->fetch_assoc()) {
+
+                                    $q1 ="SELECT i.url from immaginicamera i join camere c on c.idcamera = i.idcamera join hotel h on h.idhotel = c.idhotel  where h.idhotel = ".$row['idhotel']." LIMIT 1";
+                                    $result1 = $_SESSION["db"] ->query($q1);
+                                    
+                             echo"
+                            
+                                <div class='card w-25 float-start'>
+                                <img src='".$result1->fetch_assoc()['url']."' class='card-img-top' style:'height: 200px;
+                                width: 100%;'>
+                                <div class='card-body'>
+                                    <a href='php/paghotel.php?nome=".$row['nome']."'>
+                                    <h5 class='card-title'>". $row['nome'] ."</h5>
+                                    </a>
+                                    <p class='card-text'>".$row['descrizione']."</p>
+                                </div>
+                        </div>";
+            }
+                                
+                            }
+                            else {
+                                echo "non esiste";
+                            }
+                            
+                        }
+        
+
+
+                        $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where c.postitotali <= ".$_SESSION['numViaggiatori']."";
                         $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
 
                         while ($row = $result->fetch_assoc()) {
