@@ -33,14 +33,13 @@ if (isset($_POST['elimina_cookie'])) {
 
 ?>
 <?php
- session_start();
- $_SESSION['checkin'] = "2022-10-23";
- $_SESSION['checkout'] = "2022-10-23";
+session_start();
+$_SESSION['checkin'] = "2022-10-23";
+$_SESSION['checkout'] = "2022-10-23";
 
 
- require_once "./db/connectDB.php";
-print_r($_SESSION);
-print_r($_POST);
+require_once "./db/connectDB.php";
+
 if(isset($_POST['posto']))
 {
     $_SESSION['posto'] = $_POST['posto'];
@@ -48,15 +47,7 @@ if(isset($_POST['posto']))
 
 ?>
 <body style="background-color: burlywood;">
-<h1>Elimina Cookie</h1>
-    <form method="post">
-        <input type="submit" name="elimina_cookie" value="Elimina Cookie">
-    </form>
-
-    <h1>Mostra tutti gli hotel</h1>
-    <form method="post">
-        <input type="submit" name="allHotel" value="allHotel">
-    </form>
+    
     <!--Cpmtomaasdgsdfsdf-->
     <!--container-->
     <div class="container-fluid text-center position-relative" style="min-height: 200vh;">
@@ -249,6 +240,11 @@ if(isset($_POST['posto']))
             <!--Sistemare il footer per averlo completo-->
         
             <div class="footer position-absolute b-0">
+            <form method="post">
+    <input type="submit" name="elimina_cookie" value="Elimina Cookie" style="opacity: 0; position: absolute; top: 0; left: 0; width: 50px; height: 30px; overflow: hidden;">
+</form>
+
+
                 <div class="row">
                     <div class="col-md-3">
                     </div>
@@ -287,6 +283,7 @@ if(isset($_POST['posto']))
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    
 </body>
 
 </html>
