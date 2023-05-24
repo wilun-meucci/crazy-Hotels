@@ -1,9 +1,9 @@
 <?php
 
+require_once "connectDB.php";
     # fa una query al db tramite mail or idUtente
     function getUSer($id)
     {
-        
         global $connessione;
         $sql = "SELECT * FROM utenti where email = '$id' OR idUtente = '$id' ;";
         $result = $connessione->query($sql);
@@ -89,4 +89,3 @@
         return $result->fetch_assoc();
 
     }
-?>

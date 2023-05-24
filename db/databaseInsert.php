@@ -1,6 +1,7 @@
 <?php
-    $connessione = $_SESSION["db"];
-
+    
+    require_once "connectDB.php";
+    
     function registration($userId,$nome, $cognome, $mail, $psw, $gender,$conpleanno,$telefono)
     {
         global $connessione;
@@ -17,4 +18,3 @@
             return false;
         }
     }
-?>

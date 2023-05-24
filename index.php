@@ -13,15 +13,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     
 </head>
-
 <?php
+ session_start();
+ require_once "./db/connectDB.php";
 
-session_start();
-require ( "./db/connectDB.php");
-$_SESSION["db"] = $connessione = connectDB();
 if(isset($_POST['posto']))
 {
     $_SESSION['posto'] = $_POST['posto'];
+    print_r($_SESSION);
+    echo $_POST['checkin'];
 }
 
 ?>
@@ -40,6 +40,7 @@ if(isset($_POST['posto']))
                     <a href="index.php"><img src="iconphoto/crazylogo5.png" alt="3" id="logonav"></a>
                     <?php
 
+                   
                     if (!isset($_SESSION["user"])) {
                         $login = false;
                     }
@@ -54,15 +55,14 @@ if(isset($_POST['posto']))
                         </button>
                             <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
                                 <li><a href='./php/leMiePrenotazioni.php'><button class='dropdown-item' type='button'>Le Mie Prenotazioni</button></a></li>
-                                <li><button class='dropdown-item' type='button'>fsffd</button></li>
                                 <form action='index.php' method='post'>
                                     <li>
                                         <input type='submit' name='esci' value='Esci' class='dropdown-item'>
                                     </li>
                                 </form>
                             </ul>
-                        </div>
-                        ";
+                        </div>";
+        
 
                     ?>
                     <?php
@@ -88,7 +88,7 @@ if(isset($_POST['posto']))
                     <form method="post" class="bar-search">
                         <input type="text" placeholder="dove vuoi andare ?" name="posto" id="posto">
                         <button><i class="bi bi-search"></i></button>
-                    </form>
+                    
                      <br><br><br><br><br><br><br><br>
                 </div>
 
@@ -106,13 +106,11 @@ if(isset($_POST['posto']))
                         <label> Data Check-Out : </label> ".$_SESSION['checkout']." 
                         <label> Numero Persone : </label> ".$_SESSION['numViaggiatori']."
                         <a href='./index.php'><button type='submit' class='btn btn-primary'>Cambia</button></a>";
-                        header('location: index.php');
                     }
                     else
                     {
                         echo "<div>
-                        <form method='post'>
-                        <label for='chechin'>Data Check-in</label>
+                        <label for='checkin'>Data Check-in</label>
                         <input required type='date' name='checkin' class='datepicker' id='checkin'>
                         <label for='checkout'>Data Check-out</label>
                         <input required type='date' name='checkout' class='datepicker' id='checkout'>
@@ -154,48 +152,62 @@ if(isset($_POST['posto']))
                     </div>
                         <br><br>
                     <?php
-        
-                        if(isset($_SESSION["posto"]))
+
+                        if(isset($_SESSION["posto"]) and isset($_SESSION['numViaggiatori']))
                         {
                             require("./db/databaseQuery.php");
-                            if(isset($_POST["posto"]) && exitsHotel($_POST["posto"]))
-                            {
+                        
+                                $q = "SELECT h.idhotel, h.nome, h.indirizzo, h.citta, h.descrizione
+                                FROM hotel h join camere c on c.idhotel = h.idhotel
+                                WHERE c.idCamera NOT IN (
+                                    SELECT c.idCamera
+                                    FROM prenotazioni p
+                                    INNER JOIN camere c ON p.idCamera = c.idCamera join hotel h on h.idhotel = c.idhotel
+                                    WHERE (p.dataCheckIn <= '".$_SESSION['checkin']."' AND p.dataCheckOut >= '".$_SESSION['checkin']."')
+                                        OR (p.dataCheckIn <= '".$_SESSION['checkout']."' AND p.dataCheckOut >= '".$_SESSION['checkout']."')
+                                        OR ('".$_SESSION['checkin']."' <= p.dataCheckIn AND '".$_SESSION['checkout']."' >= p.dataCheckIn)
+                                )  AND h.citta = '".$_SESSION['posto']."'
+                                AND EXISTS (
+                                    SELECT c.idCamera
+                                    FROM camere c
+                                    WHERE c.idHotel = h.idHotel
+                                    AND c.postitotali >= '".$_SESSION['numViaggiatori']."'
+                                ) 
+                                GROUP BY h.idHotel ";
 
-                                $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where h.citta = '".$_SESSION["posto"]."'";
-                                $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
-                                
-                            }
-                            else if ($_POST["posto"] == null && !exitsHotel($_POST["posto"])) 
-                            {
-                                $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel";
-                                $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
-                            }
-                            else 
-                            {
-                                echo "<h1>Nessun hotel trovato</h1>";
-                            }
+                                $result = $connessione ->query($q) or die($connessione ->error);
+                                if($result->num_rows == 0)
+                                    echo "<h2>Non Sono Presenti Hotel in Queste Date o In Questa Città</h2>";
                             
                         }
-                        if(isset($result)) {
+                        else{
+                            $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel  GROUP BY c.idHotel";
+                            $result = $connessione ->query($q) or die($connessione ->error);
+                            if($result->num_rows == 0)
+                                    echo "<h2>Non Sono Presenti Hotel in Queste Date o In Questa Città</h2>";
+                        }
+                        
                         while ($row = $result->fetch_assoc()) {
 
                                 $q1 ="SELECT i.url from immaginicamera i join camere c on c.idcamera = i.idcamera join hotel h on h.idhotel = c.idhotel  where h.idhotel = ".$row['idhotel']." LIMIT 1";
-                                $result1 = $_SESSION["db"] ->query($q1);
+                                $result1 = $connessione ->query($q1);
                                 
-                         echo"
-                        
-                            <div class='card w-25 float-start'>
-                            <img src='".$result1->fetch_assoc()['url']."' class='card-img-top' style:'height: 200px;
-                            width: 100%;'>
-                            <div class='card-body'>
-                                <a href='php/paghotel.php?nome=".$row['nome']."'>
-                                <h5 class='card-title'>". $row['nome'] ."</h5>
-                                </a>
-                                <p class='card-text'>".$row['descrizione']."</p>
-                            </div>
-                    </div>";
+                                    echo"
+                                        <div class='card w-25 float-start'>
+                                        <img src='".$result1->fetch_assoc()['url']."' class='card-img-top' style:'height: 200px;
+                                        width: 100%;'>
+                                        <div class='card-body'>
+                                            <a href='php/paghotel.php?nome=".$row['nome']."'>
+                                            <h5 class='card-title'>". $row['nome'] ."</h5>
+                                            </a>
+                                            <p class='card-text'>".$row['descrizione']."</p>
+                                        </div>
+                                </div>";
+                                
+                                
+                         
                         }
-                }
+                
                     ?>
                 </div>
                 
