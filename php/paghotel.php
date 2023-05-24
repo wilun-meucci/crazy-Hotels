@@ -25,7 +25,13 @@
                         $_SESSION["db"] = $connessione = connectDB();
                         $q = "SELECT * FROM hotel WHERE nome = '" .$_SESSION['nome']. "' ";
                         $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
-                        $q2 = "SELECT c.* from camere c JOIN hotel h ON c.idhotel = h.idhotel where h.nome= '" .$_SESSION['nome']."' AND c.postitotali <= ".$_SESSION['numViaggiatori']." ";
+
+                        if(!isset($_SESSION['numViaggiatori'])){
+                            $q2 = "SELECT c.* from camere c JOIN hotel h ON c.idhotel = h.idhotel where h.nome= '" .$_SESSION['nome']."'"; 
+                        }else{
+                            $q2 = "SELECT c.* from camere c JOIN hotel h ON c.idhotel = h.idhotel where h.nome= '" .$_SESSION['nome']."' AND c.postitotali <= ".$_SESSION['numViaggiatori']." ";
+                        }
+
                         $result2 = $_SESSION["db"] -> query($q2) or die($_SESSION["db"] ->error);
                         echo "<h1 class='titolo'>". $_SESSION['nome']." </h1>" ;
   // stamp camere non presneti in prenotazione
