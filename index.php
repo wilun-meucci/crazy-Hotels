@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    
 </head>
 
 <?php
@@ -28,7 +29,7 @@ if(isset($_POST['posto']))
     <!--Cpmtomaasdgsdfsdf-->
     <!--container-->
     <div class="container-fluid text-center position-relative" style="min-height: 160vh;">
-        <div class="row">
+    <div class="row">
             <div class="col-md-2">
 
             </div>
@@ -87,7 +88,7 @@ if(isset($_POST['posto']))
                     <form method="post" class="bar-search">
                         <input type="text" placeholder="dove vuoi andare ?" name="posto" id="posto">
                         <button><i class="bi bi-search"></i></button>
-                    
+                    </form>
                      <br><br><br><br><br><br><br><br>
                 </div>
 
@@ -117,7 +118,6 @@ if(isset($_POST['posto']))
                         <input required type='date' name='checkout' class='datepicker' id='checkout'>
                         <label for='numViaggiatori'>Persone</label>
                         <input required type='number' name='numViaggiatori' id='numViaggiatori'>
-                        </form>
                         </div>
                         </form>";
                         
@@ -155,43 +155,28 @@ if(isset($_POST['posto']))
                         <br><br>
                     <?php
         
-                        if(isset($_SESSION["posto"]) and isset($_SESSION['numViaggiatori']))
+                        if(isset($_SESSION["posto"]))
                         {
-                            echo "posto e num";
                             require("./db/databaseQuery.php");
-                            if(exitsHotel($_POST["posto"]))
+                            if(isset($_POST["posto"]) && exitsHotel($_POST["posto"]))
                             {
 
-                                $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where c.postitotali >= ".$_SESSION['numViaggiatori']." AND h.citta = '".$_SESSION["posto"]."'";
+                                $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where h.citta = '".$_SESSION["posto"]."'";
                                 $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
                                 
                             }
-                            else {
-                                echo "non esiste";
-                            }
-                            
-                        }else if(isset($_SESSION['numViaggiatori'])){
-                            echo "num";
-                            $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where c.postitotali >= ".$_SESSION['numViaggiatori']."";
-                            $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
-                        }else if(isset($_SESSION["posto"])){
-                            echo "posto";
-                            require("./db/databaseQuery.php");
-                            if(exitsHotel($_SESSION["posto"]))
+                            else if ($_POST["posto"] == null && !exitsHotel($_POST["posto"])) 
                             {
-                                $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel Where  h.citta = '".$_SESSION["posto"]."'";
+                                $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel";
                                 $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
                             }
-                            else {
-                                echo "non esiste";
+                            else 
+                            {
+                                echo "<h1>Nessun hotel trovato</h1>";
                             }
+                            
                         }
-                        else{
-                            echo "un ca";
-                            $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel";
-                            $result = $_SESSION["db"] ->query($q) or die($_SESSION["db"] ->error);
-                        }
-                        
+                        if(isset($result)) {
                         while ($row = $result->fetch_assoc()) {
 
                                 $q1 ="SELECT i.url from immaginicamera i join camere c on c.idcamera = i.idcamera join hotel h on h.idhotel = c.idhotel  where h.idhotel = ".$row['idhotel']." LIMIT 1";
@@ -209,7 +194,8 @@ if(isset($_POST['posto']))
                                 <p class='card-text'>".$row['descrizione']."</p>
                             </div>
                     </div>";
-        }
+                        }
+                }
                     ?>
                 </div>
                 
@@ -249,6 +235,13 @@ if(isset($_POST['posto']))
         </div>
 
     </div>
+    <script>
+        checkin.min = new Date().toISOString().split("T")[0];
+        checkout.min = new Date().toISOString().split("T")[0];
+        document.getElementById('checkin').value = new Date().toISOString().split("T")[0];
+        document.getElementById('checkout').value = new Date().toISOString().split("T")[0];
+        document.getElementById('numViaggiatori').value = 1;
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
