@@ -202,7 +202,6 @@ if(isset($_POST['posto']))
                             
                         }
                         else{
-                            echo "sono qui";
                             $q = "SELECT h.idhotel, h.nome, h.descrizione, c.idcamera FROM hotel h JOIN camere c ON h.idhotel = c.idhotel GROUP BY c.idHotel";
                             $result = $connessione ->query($q) or die($connessione ->error);
                             if($result->num_rows == 0)
