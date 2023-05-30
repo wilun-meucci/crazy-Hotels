@@ -69,8 +69,10 @@
 
                         echo "
                          <div class='row'>
-                         <div class='col-md-6'>
+                         <div class='col-md-6 d-flex'>
+                            <div class='align-y'>
                             <img src='" . $result1->fetch_assoc()['url'] . "' style='width:100%'>
+                            </div>
                          </div>
                          <div class='col-md-6'>
                             <div class='info'>";

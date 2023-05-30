@@ -3,6 +3,14 @@
 @import 'searchbar.css';
 @import 'hotel.css';
 
+.align-y {
+    align-self: center;
+}
+
+.align-y img {
+    border-radius: 1rem;
+}
+
 .body {
     background-color: burlywood;
     background:fixed;
