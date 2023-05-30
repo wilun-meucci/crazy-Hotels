@@ -123,7 +123,7 @@ INSERT INTO `camere` (`idCamera`, `tipo`, `nomeCamera`, `numeroCamera`, `numeroL
 ('17', 'doppia', 'love suite', '169', '1', '20', 2, 'per una vacanza romantica', '3'),
 ('18', 'tripla', 'suite', '127', '2', '25', 3, 'per una vacanza con la tua famiglia', '4'),
 ('20', 'singola', 'singola', '22', '1', '12', 1, 'per una vacanza solitaria', '4'),
-('3', 'quadrupla', 'ciccio', '103', '3', '20', 4, 'Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…', '1'),
+('3', 'quadrupla', 'Love Suite', '103', '3', '20', 4, 'Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…', '1'),
 ('4', 'tripla', 'Long Island', '69', '3', '15', 2, 'Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…', '3'),
 ('5', 'doppia', 'Francesco Totti', '97', '2', '10', 2, 'Se viaggi con un gruppo di amici o con la tua famiglia, le Quadruple sono la scelta perfetta per te. Qui lo spazio e la luce non mancano, perché la…', '4'),
 ('6', 'tripla', 'imperial', '220', '3', '25', 3, 'perfetta per te e la tua famiglia', '6'),
